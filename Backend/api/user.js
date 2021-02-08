@@ -17,13 +17,13 @@ module.exports = app => {
 
 
     const led = async () => {
-        console.log("led teste")
+        // console.log("led teste")
         
-        if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
+        // if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
             LED.writeSync(1); //set pin state to 1 (turn LED on)
-        } else {
-            LED.writeSync(0); //set pin state to 0 (turn LED off)
-        }
+        // } else {
+        //     LED.writeSync(0); //set pin state to 0 (turn LED off)
+        // }
     }
 
     const save_car = async (req, res) => {
