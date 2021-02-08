@@ -3,7 +3,7 @@ module.exports = app => {
 
 
     app.route('/led')
-        .get(app.api.user.led)
+        .post(app.api.user.led)
 
     // app.route('/validate')
     //     .get(app.api.auth.validate)
