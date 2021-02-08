@@ -1,7 +1,7 @@
 
 var os = require('os');
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-var LED = new Gpio(33, 'out'); //use GPIO pin 4, and specify that it is output
+var LED = new Gpio(13, 'out'); //use GPIO pin 4, and specify that it is output
 
 
 module.exports = app => {
