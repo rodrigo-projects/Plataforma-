@@ -16,8 +16,7 @@ module.exports = app => {
     }
 
 
-    const led = async (req, res) => {
-        const user = { ...req.body }
+    const led = async () => {
         console.log("led")
         
         if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
