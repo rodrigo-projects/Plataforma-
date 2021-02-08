@@ -19,7 +19,7 @@ export default class controleDireto extends Component {
 
         // user=document.getElementById('bx').value ;
         const user=0
-        axios.post(`http://192.106.0.105:3001/led`,user).then(resp => {
+        axios.post(`http://192.168.0.105:3001/led`,user).then(resp => {
 
         })
     }
