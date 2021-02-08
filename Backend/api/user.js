@@ -17,7 +17,7 @@ module.exports = app => {
 
 
     const led = async () => {
-        console.log("led")
+        console.log("led teste")
         
         if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
             LED.writeSync(1); //set pin state to 1 (turn LED on)
