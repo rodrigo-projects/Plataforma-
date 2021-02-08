@@ -18,7 +18,10 @@ export default class controleDireto extends Component {
         // })
 
         // user=document.getElementById('bx').value ;
-        axios.post(`http://localhost:3001/led`)
+        const user=0
+        axios.post(`http://localhost:3001/led`,user).then(resp => {
+
+        })
     }
 
     salvar() {
