@@ -26,7 +26,8 @@
     "passport-jwt": "4.0.0",
     "pg": "7.4.3",
     "pm2": "3.0.4",
-    "serialport": "^7.1.5"
+    "serialport": "^7.1.5",
+    "rpio":"^1.0"
   },
   "devDependencies": {
     "nodemon": "1.18.4"
