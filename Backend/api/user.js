@@ -17,20 +17,27 @@ module.exports = app => {
     const led = async (req, res) => {
         const user = { ...req.body }
         console.log(user)
-        const a=0;
-        const temp=500;
+        const a = 0;
+        const temp = 500;
 
 
 
 
-        const led = new Gpio(13, {mode: Gpio.OUTPUT});
+        const led = new Gpio(13, { mode: Gpio.OUTPUT });
+
+        let dutyCycle = 0;
+
+        setInterval(() => {
+            led.pwmWrite(dutyCycle);
+
+            dutyCycle += 5;
+            if (dutyCycle > 255) {
+                dutyCycle = 0;
+            }
+        }, 8000);
 
 
 
-
-
-
-      
         return res.json("ok")
 
     }
