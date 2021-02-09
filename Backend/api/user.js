@@ -29,7 +29,7 @@ module.exports = app => {
         rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
         const temp=250
 
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < user.bx; i++) {
             /* On for 1 second */
             rpio.write(33, rpio.HIGH);
             rpio.msleep(temp);
