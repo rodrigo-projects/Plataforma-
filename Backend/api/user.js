@@ -24,12 +24,12 @@ module.exports = app => {
 
 
     const led = async (req, res) => {
-        const user = { ...req.body }
+        const user = { ...req }
         console.log(user)
         rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
         const temp=250
 
-        for (var i = 0; i < user; i++) {
+        for (var i = 0; i < 100; i++) {
             /* On for 1 second */
             rpio.write(33, rpio.HIGH);
             rpio.msleep(temp);
