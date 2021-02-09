@@ -1,7 +1,6 @@
 
 var os = require('os');
-var rpio = require('rpio');
-
+const Gpio = require('pigpio').Gpio;
 
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
@@ -24,18 +23,7 @@ module.exports = app => {
 
 
 
-        rpio.open(13, rpio.OUTPUT, rpio.HIGH);
-
-        
-        // for (var i = 0; i < 5; i++) {
-        //         /* On for 1 second */
-        //         rpio.write(13, rpio.HIGH);
-        //         rpio.sleep(1);
-        
-        //         /* Off for half a second (500ms) */
-        //         rpio.write(13, rpio.LOW);
-        //         rpio.msleep(500);
-        // }
+        const led = new Gpio(13, {mode: Gpio.OUTPUT});
 
 
 
