@@ -1,6 +1,6 @@
 
 var os = require('os');
-// var rpio = require('rpio');
+var rpio = require('rpio');
 
 
 module.exports = app => {
@@ -24,7 +24,7 @@ module.exports = app => {
 
 
 
-        // rpio.open(13, rpio.OUTPUT, rpio.LOW);
+        rpio.open(13, rpio.OUTPUT, rpio.HIGH);
 
         
         // for (var i = 0; i < 5; i++) {
