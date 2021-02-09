@@ -6,7 +6,7 @@ var rpio = require('rpio'); //define uso do rpio
  
 var ledState = 0; //define estado do led
  
-rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
+
  
 
 
@@ -26,7 +26,7 @@ module.exports = app => {
     const led = async (req, res) => {
         const user = { ...req.body }
         console.log("user")
-
+        rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
        
             ledState = !ledState; //troca estado do led
             if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
