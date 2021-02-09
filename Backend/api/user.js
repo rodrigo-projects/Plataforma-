@@ -25,7 +25,7 @@ module.exports = app => {
             setTimeout(function () {
                     LED.writeSync(1); //set pin state to 1 (turn LED on)
                 
-             }, 1000);
+             }, 1);
              LED.writeSync(0); //set pin state to 0 (turn LED off)
 
             //     a=a+1;
