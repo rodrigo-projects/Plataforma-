@@ -1,6 +1,6 @@
 
 var os = require('os');
-var rpio = require('rpio');
+// var rpio = require('rpio');
 
 
 module.exports = app => {
@@ -24,18 +24,18 @@ module.exports = app => {
 
 
 
-        rpio.open(13, rpio.OUTPUT, rpio.LOW);
+        // rpio.open(13, rpio.OUTPUT, rpio.LOW);
 
         
-        for (var i = 0; i < 5; i++) {
-                /* On for 1 second */
-                rpio.write(13, rpio.HIGH);
-                rpio.sleep(1);
+        // for (var i = 0; i < 5; i++) {
+        //         /* On for 1 second */
+        //         rpio.write(13, rpio.HIGH);
+        //         rpio.sleep(1);
         
-                /* Off for half a second (500ms) */
-                rpio.write(13, rpio.LOW);
-                rpio.msleep(500);
-        }
+        //         /* Off for half a second (500ms) */
+        //         rpio.write(13, rpio.LOW);
+        //         rpio.msleep(500);
+        // }
 
 
 
