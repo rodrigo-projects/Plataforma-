@@ -9,8 +9,8 @@ gp.setup(13,gp.OUT)
 
 a=0
 b=100
-p=0.0025
-a=sys.argv[1]
+p=0.5
+r=sys.argv[1]
 print(a)
 while (a<100):
    gp.output(13,gp.HIGH)
