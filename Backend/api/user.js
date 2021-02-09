@@ -1,6 +1,14 @@
 
 var os = require('os');
-import {PythonShell} from 'python-shell';
+var rpio = require('rpio'); //define uso do rpio
+ 
+
+ 
+var ledState = 0; //define estado do led
+ 
+
+ 
+
 
 
 module.exports = app => {
@@ -18,22 +26,12 @@ module.exports = app => {
     const led = async (req, res) => {
         const user = { ...req.body }
         console.log("user")
-
-        let pyshell = new PythonShell('../arduino/teste01.py');
-        pyshell.send('hello');
- 
-        pyshell.on('message', function (message) {
-          // received a message sent from the Python script (a simple "print" statement)
-          console.log(message);
-        });
-         
-        // end the input stream and allow the process to exit
-        pyshell.end(function (err,code,signal) {
-          if (err) throw err;
-          console.log('The exit code was: ' + code);
-          console.log('The exit signal was: ' + signal);
-          console.log('finished');
-        });
+        rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
+       
+            ledState = !ledState; //troca estado do led
+            if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
+            else rpio.write(33, rpio.LOW); //apaga LED
+     
        
         return res.json("ok")
 
