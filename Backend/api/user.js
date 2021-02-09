@@ -22,11 +22,13 @@ module.exports = app => {
         const a=0;
 
         // while (10>a) {
+            LED.writeSync(1); //set pin state to 0 (turn LED off)
+
             setTimeout(function () {
-                    LED.writeSync(1); //set pin state to 1 (turn LED on)
                 
-             }, 1);
-             LED.writeSync(0); //set pin state to 0 (turn LED off)
+                    LED.writeSync(0); //set pin state to 1 (turn LED on)
+                
+             }, 1000);
 
             //     a=a+1;
         // }
