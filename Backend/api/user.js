@@ -16,12 +16,12 @@ module.exports = app => {
 
     const led = async (req, res) => {
         const user = { ...req.body }
-        console.log(user)
-       
+        console.log("user")
+
 
         const spawn = require('child_process').spawn
-const process = spawn('python',['../arduino/teste01.py','1'])
-        process.stdout.on('data',data=>{
+        const process = spawn('python', ['../arduino/teste01.py'])
+        process.stdout.on('data', data => {
             console.log(data.toString())
         })
 
