@@ -1,7 +1,6 @@
 
 var os = require('os');
-var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-var LED = new Gpio(13, 'out'); //use GPIO pin 4, and specify that it is output
+var rpio = require('rpio');
 
 
 module.exports = app => {
@@ -22,28 +21,28 @@ module.exports = app => {
         const a=0;
         const temp=500;
 
-        while (10>a) {
 
-            setTimeout(function () {
-                
-                    LED.writeSync(1); //set pin state to 1 (turn LED on)
-                
-             }, temp);
 
-             setTimeout(function () {
-                
-                LED.writeSync(0); //set pin state to 1 (turn LED on)
-            
-         }, temp*2);
 
-                a=a+1;
+        rpio.open(13, rpio.OUTPUT, rpio.LOW);
+
+        
+        for (var i = 0; i < 5; i++) {
+                /* On for 1 second */
+                rpio.write(13, rpio.HIGH);
+                rpio.sleep(1);
+        
+                /* Off for half a second (500ms) */
+                rpio.write(13, rpio.LOW);
+                rpio.msleep(500);
         }
-        // if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-        //     LED.writeSync(1); //set pin state to 1 (turn LED on)
-        // } else {
-        //     LED.writeSync(0); //set pin state to 0 (turn LED off)
-        // }
 
+
+
+
+
+
+      
         return res.json("ok")
 
     }
