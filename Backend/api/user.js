@@ -20,11 +20,13 @@ module.exports = app => {
 
 
         const spawn = require('child_process').spawn
+        console.log("1")
         const process = spawn('python', ['../arduino/teste01.py'])
+        console.log("2")
         process.stdout.on('data', data => {
             console.log(data.toString())
         })
-
+        console.log("3")
         return res.json("ok")
 
     }
