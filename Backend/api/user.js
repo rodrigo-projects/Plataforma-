@@ -1,6 +1,6 @@
 
 var os = require('os');
-const spawn = require('child_process')
+const spawn = require('child_process').spawn
 const process = spawn('python',['../arduino/teste01.py'])
 
 module.exports = app => {
