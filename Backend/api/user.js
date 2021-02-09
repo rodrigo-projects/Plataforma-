@@ -2,7 +2,7 @@
 var os = require('os');
 var rpio = require('rpio'); //define uso do rpio
  
-LED = 29 //define pino do LED
+LED = 33 //define pino do LED
  
 var ledState = 0; //define estado do led
  
