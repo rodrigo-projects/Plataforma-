@@ -19,7 +19,7 @@ module.exports = app => {
         const user = { ...req.body }
         console.log("user")
 
-        let pyshell = new PythonShell('../arduino/teste01.py');
+        let pyshell = new PythonShell('//arduino/teste01.py');
         pyshell.send('hello');
  
         pyshell.on('message', function (message) {
