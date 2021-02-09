@@ -1,6 +1,14 @@
 
 var os = require('os');
-import {PythonShell} from 'python-shell';
+var rpio = require('rpio'); //define uso do rpio
+ 
+LED = 29 //define pino do LED
+ 
+var ledState = 0; //define estado do led
+ 
+rpio.open(LED, rpio.OUTPUT, rpio.LOW); //define LED como output
+ 
+
 
 
 module.exports = app => {
@@ -19,21 +27,11 @@ module.exports = app => {
         const user = { ...req.body }
         console.log("user")
 
-        let pyshell = new PythonShell('../../arduino/teste01.py');
-        pyshell.send('hello');
- 
-        pyshell.on('message', function (message) {
-          // received a message sent from the Python script (a simple "print" statement)
-          console.log(message);
-        });
-         
-        // end the input stream and allow the process to exit
-        pyshell.end(function (err,code,signal) {
-          if (err) throw err;
-          console.log('The exit code was: ' + code);
-          console.log('The exit signal was: ' + signal);
-          console.log('finished');
-        });
+        etInterval(function() {
+            ledState = !ledState; //troca estado do led
+            if(ledState == 0) rpio.write(LED, rpio.HIGH); //acende LED
+            else rpio.write(LED, rpio.LOW); //apaga LED
+         }, 1000); //configura intervalo de 1000 ms
        
         return res.json("ok")
 
