@@ -15,7 +15,7 @@ export default class controleDireto extends Component {
         //     // this.setState({ user: initialState.user, list }) 
 
         // })
-        const flag=1;
+        const rods=1;
 
         const user = {
             conforto: '',
@@ -35,10 +35,10 @@ export default class controleDireto extends Component {
 
            user.bx=document.getElementById('bx').value ;
         // const user = 20
-        if(flag==1){
-            flag=0
+        if(rods==1){
+            rods=0
         axios.post(`http://192.168.0.105:3001/led`, user).then(resp => {
-            flag=1
+            rods=1
 
         })
     }else{
