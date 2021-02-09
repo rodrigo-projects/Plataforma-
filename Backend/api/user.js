@@ -1,7 +1,7 @@
 
 var os = require('os');
 import {PythonShell} from 'python-shell';
-let pyshell = new PythonShell('../arduino/teste01.py');
+
 
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
@@ -19,7 +19,7 @@ module.exports = app => {
         const user = { ...req.body }
         console.log("user")
 
-
+        let pyshell = new PythonShell('../arduino/teste01.py');
         pyshell.send('hello');
  
         pyshell.on('message', function (message) {
