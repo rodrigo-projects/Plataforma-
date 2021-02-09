@@ -1,7 +1,6 @@
 
 var os = require('os');
-const spawn = require('child_process').spawn
-const process = spawn('python',['../arduino/teste01.py'])
+
 
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
@@ -19,8 +18,11 @@ module.exports = app => {
         const user = { ...req.body }
         console.log(user)
        
+
+        const spawn = require('child_process').spawn
+const process = spawn('python',['../arduino/teste01.py','1'])
         process.stdout.on('data',data=>{
-            console.log(data.toInt('10'))
+            console.log(data.toString())
         })
 
         return res.json("ok")
