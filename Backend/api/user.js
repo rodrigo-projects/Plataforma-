@@ -26,15 +26,19 @@ module.exports = app => {
     const led = async (req, res) => {
         const user = { ...req.body }
         console.log("user")
+        const a=0
         rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
        
             // ledState = !ledState; //troca estado do led
             // if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
             // else rpio.write(33, rpio.LOW); //apaga LED
+            while(a<10){
             rpio.write(33, rpio.HIGH);
        rpio.sleep(1)
        rpio.write(33, rpio.LOW);
        rpio.sleep(1)
+       a=a+1
+            }
         return res.json("ok")
 
     }
