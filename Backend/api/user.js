@@ -1,8 +1,7 @@
 
 var os = require('os');
-const spawn = require('child_process').spawn
-       
-const process = spawn('python', ['../../arduino/teste01.py'])
+import {PythonShell} from 'python-shell';
+let pyshell = new PythonShell('../arduino/teste01.py');
 
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
@@ -21,11 +20,20 @@ module.exports = app => {
         console.log("user")
 
 
-      
-      
-        process.stdout.on('data', data => {
-            console.log(data.toString())
-        })
+        pyshell.send('hello');
+ 
+        pyshell.on('message', function (message) {
+          // received a message sent from the Python script (a simple "print" statement)
+          console.log(message);
+        });
+         
+        // end the input stream and allow the process to exit
+        pyshell.end(function (err,code,signal) {
+          if (err) throw err;
+          console.log('The exit code was: ' + code);
+          console.log('The exit signal was: ' + signal);
+          console.log('finished');
+        });
        
         return res.json("ok")
 
