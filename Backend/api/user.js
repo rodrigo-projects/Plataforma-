@@ -39,7 +39,7 @@ module.exports = app => {
             rpio.msleep(temp);
         }
 
-        console.log("user")
+        console.log(user)
         // ledState = !ledState; //troca estado do led
         // if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
         // else rpio.write(33, rpio.LOW); //apaga LED
