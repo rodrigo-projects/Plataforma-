@@ -1,7 +1,7 @@
 
 var os = require('os');
 const spawn = require('child_process')
-const precess = spawn('python',['./teste01.py'])
+const precess = spawn('python',['../arduino/teste01.py'])
 
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
