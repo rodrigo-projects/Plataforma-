@@ -28,11 +28,13 @@ module.exports = app => {
         console.log("user")
         rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
        
-            ledState = !ledState; //troca estado do led
-            if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
-            else rpio.write(33, rpio.LOW); //apaga LED
-     
-       
+            // ledState = !ledState; //troca estado do led
+            // if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
+            // else rpio.write(33, rpio.LOW); //apaga LED
+            rpio.write(33, rpio.HIGH);
+       rpio.sleep(1)
+       rpio.write(33, rpio.LOW);
+       rpio.sleep(1)
         return res.json("ok")
 
     }
