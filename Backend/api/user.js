@@ -20,18 +20,24 @@ module.exports = app => {
         const user = { ...req.body }
         console.log(user)
         const a=0;
+        const temp=500;
 
-        // while (10>a) {
-            LED.writeSync(1); //set pin state to 0 (turn LED off)
+        while (10>a) {
 
             setTimeout(function () {
                 
-                    LED.writeSync(0); //set pin state to 1 (turn LED on)
+                    LED.writeSync(1); //set pin state to 1 (turn LED on)
                 
-             }, 1000);
+             }, temp);
 
-            //     a=a+1;
-        // }
+             setTimeout(function () {
+                
+                LED.writeSync(0); //set pin state to 1 (turn LED on)
+            
+         }, temp*2);
+
+                a=a+1;
+        }
         // if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
         //     LED.writeSync(1); //set pin state to 1 (turn LED on)
         // } else {
