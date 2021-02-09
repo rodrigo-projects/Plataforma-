@@ -2,11 +2,11 @@
 var os = require('os');
 var rpio = require('rpio'); //define uso do rpio
  
-LED = 33 //define pino do LED
+
  
 var ledState = 0; //define estado do led
  
-rpio.open(LED, rpio.OUTPUT, rpio.LOW); //define LED como output
+rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
  
 
 
@@ -27,11 +27,11 @@ module.exports = app => {
         const user = { ...req.body }
         console.log("user")
 
-        etInterval(function() {
+       
             ledState = !ledState; //troca estado do led
-            if(ledState == 0) rpio.write(LED, rpio.HIGH); //acende LED
-            else rpio.write(LED, rpio.LOW); //apaga LED
-         }, 1000); //configura intervalo de 1000 ms
+            if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
+            else rpio.write(33, rpio.LOW); //apaga LED
+     
        
         return res.json("ok")
 
