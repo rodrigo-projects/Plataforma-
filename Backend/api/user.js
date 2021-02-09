@@ -25,7 +25,7 @@ module.exports = app => {
 
     const led = async (req, res) => {
         const user = { ...req.body }
-        // console.log("user")
+        console.log(user)
         rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
         const temp=250
 
@@ -39,7 +39,6 @@ module.exports = app => {
             rpio.msleep(temp);
         }
 
-        console.log(user)
         // ledState = !ledState; //troca estado do led
         // if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
         // else rpio.write(33, rpio.LOW); //apaga LED
