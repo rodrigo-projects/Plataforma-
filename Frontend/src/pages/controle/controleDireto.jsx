@@ -291,7 +291,7 @@ export default class controleDireto extends Component {
                                                                 <div className="box-body">
                                                                     <div className="row">
                                                                         <div className="col-xs-6">
-                                                                            <input type="number" id="bx" className="form-control" placeholder="Eixo X" />
+                                                                            <input type="number" id="bx" className="form-control" placeholder="aqui!!!" />
                                                                         </div>
                                                                         {/* <div class="col-xs-6">
                             <input type="number" id="rbx" class="form-control" placeholder="Eixo X"
