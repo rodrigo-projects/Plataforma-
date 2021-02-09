@@ -25,7 +25,7 @@ module.exports = app => {
 
     const led = async (req, res) => {
         const user = { ...req.body }
-        console.log(user)
+        console.log(user.bx)
         rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
         const temp=250
 
