@@ -27,16 +27,16 @@ module.exports = app => {
         const user = { ...req.body }
         console.log("user")
         rpio.open(33, rpio.OUTPUT, rpio.LOW); //define LED como output
+        const temp=250
 
-
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < user; i++) {
             /* On for 1 second */
             rpio.write(33, rpio.HIGH);
-            rpio.sleep(1);
+            rpio.msleep(temp);
 
             /* Off for half a second (500ms) */
             rpio.write(33, rpio.LOW);
-            rpio.msleep(500);
+            rpio.msleep(temp);
         }
 
 

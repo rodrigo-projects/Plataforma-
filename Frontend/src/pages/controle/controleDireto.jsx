@@ -9,7 +9,7 @@ export default class controleDireto extends Component {
     //     document.body.appendChild(script);
     // }
     test() {
-        // const user = 0
+        const user = 0
         // // user=document.getElementById('bx').value ;
         // axios.post(`http://localhost:3001/mov_car`, user).then(resp => {
         //     // const list = this.getUpdatedList(resp.data)
@@ -17,8 +17,7 @@ export default class controleDireto extends Component {
 
         // })
 
-        // user=document.getElementById('bx').value ;
-        const user=0
+        user=document.getElementById('bx').value ;
         axios.post(`http://192.168.0.105:3001/led`,user).then(resp => {
 
         })
