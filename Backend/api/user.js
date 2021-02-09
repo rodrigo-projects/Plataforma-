@@ -1,6 +1,7 @@
 
 var os = require('os');
-const Gpio = require('pigpio').Gpio;
+const spawn = require('child_process')
+const precess = spawn('python',['./teste01.py'])
 
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
@@ -17,26 +18,10 @@ module.exports = app => {
     const led = async (req, res) => {
         const user = { ...req.body }
         console.log(user)
-        const a = 0;
-        const temp = 500;
-
-
-
-
-        const led = new Gpio(13, { mode: Gpio.OUTPUT });
-
-        let dutyCycle = 0;
-
-        setInterval(() => {
-            led.pwmWrite(dutyCycle);
-
-            dutyCycle += 5;
-            if (dutyCycle > 255) {
-                dutyCycle = 0;
-            }
-        }, 8000);
-
-
+       
+        ProcessingInstruction.stdout.on('data',data=>{
+            console.log(data.toInt('10'))
+        })
 
         return res.json("ok")
 
