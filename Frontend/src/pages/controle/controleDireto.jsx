@@ -16,8 +16,9 @@ export default class controleDireto extends Component {
 
         // })
 
-       const user=document.getElementById('bx').value ;
-        axios.post(`http://192.168.0.105:3001/led`,user).then(resp => {
+        //    const user=document.getElementById('bx').value ;
+        const user = 20
+        axios.post(`http://192.168.0.105:3001/led`, user).then(resp => {
 
         })
     }
@@ -97,128 +98,128 @@ export default class controleDireto extends Component {
                 <button type="button" className="btn btn-info" data-toggle="modal" data-target="#modal-info">
                     Avaliar posição
                     </button>
-                    <div className="modal modal-info fade" id="modal-info">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span></button>
-                                    <h4 className="modal-title">Avaliar posição</h4>
-                                </div>
-                                <div className="modal-body">
-                                    <div className="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios2" id="op1" defaultValue="option1" />
+                <div className="modal modal-info fade" id="modal-info">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span></button>
+                                <h4 className="modal-title">Avaliar posição</h4>
+                            </div>
+                            <div className="modal-body">
+                                <div className="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios2" id="op1" defaultValue="option1" />
                                 Confortável
                               </label>
-                                    </div>
-                                    <div className="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios2" id="op2" defaultValue="option2" />
+                                </div>
+                                <div className="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios2" id="op2" defaultValue="option2" />
                                 Aceitável
                               </label>
-                                    </div>
-                                    <div className="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios2" id="op3" defaultValue="option3" />
+                                </div>
+                                <div className="radio">
+                                    <label>
+                                        <input type="radio" name="optionsRadios2" id="op3" defaultValue="option3" />
                                 Incômodo
                               </label>
-                                    </div>
-                                </div>
-                                <div className="modal-header">
-                                    <h4 className="modal-title">Dados do avaliador</h4>
-                                </div>
-                                <div className="col-xs-12 table-responsive">
-                                    <table className="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Sexo</th>
-                                                <th>Idade</th>
-                                                <th>Peso(kg)</th>
-                                            </tr>
-                                        </thead><tbody>
-                                            <tr>
-                                                <td>
-                                                    <div className="radio">
-                                                        <label>
-                                                            <input type="radio" name="optionsRadios" id="op4" defaultValue="masculino" />
-                                        Masculino
-                                      </label>
-                                                    </div>
-                                                    <div className="radio">
-                                                        <label>
-                                                            <input type="radio" name="optionsRadios" id="op5" defaultValue="feminino" />
-                                        Feminino
-                                      </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="box-body">
-                                                        <div className="row">
-                                                            <div className="col-xs-12">
-                                                                <input id="idade" type="number" className="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="box-body">
-                                                        <div className="row">
-                                                            <div className="col-xs-12">
-                                                                <input id="peso" type="number" className="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>Altura (m)</th>
-                                                <th>Comprimento pernas (m)</th>
-                                                <th>Comprimento Braços (m)</th>
-                                            </tr>
-                                        </tbody><tbody>
-                                            <tr>
-                                                <td>
-                                                    <div className="box-body">
-                                                        <div className="row">
-                                                            <div className="col-xs-12">
-                                                                <input id="altura" type="number" className="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="box-body">
-                                                        <div className="row">
-                                                            <div className="col-xs-12">
-                                                                <input id="comp_p" type="number" className="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div className="box-body">
-                                                        <div className="row">
-                                                            <div className="col-xs-12">
-                                                                <input id="comp_b" type="number" className="form-control" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
-                                    <button onClick={this.salvar} type="button" className="btn btn-outline" data-dismiss="modal">Confirmar
-                              avliação</button>
                                 </div>
                             </div>
-                            {/* /.modal-content */}
+                            <div className="modal-header">
+                                <h4 className="modal-title">Dados do avaliador</h4>
+                            </div>
+                            <div className="col-xs-12 table-responsive">
+                                <table className="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Sexo</th>
+                                            <th>Idade</th>
+                                            <th>Peso(kg)</th>
+                                        </tr>
+                                    </thead><tbody>
+                                        <tr>
+                                            <td>
+                                                <div className="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" id="op4" defaultValue="masculino" />
+                                        Masculino
+                                      </label>
+                                                </div>
+                                                <div className="radio">
+                                                    <label>
+                                                        <input type="radio" name="optionsRadios" id="op5" defaultValue="feminino" />
+                                        Feminino
+                                      </label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div className="box-body">
+                                                    <div className="row">
+                                                        <div className="col-xs-12">
+                                                            <input id="idade" type="number" className="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div className="box-body">
+                                                    <div className="row">
+                                                        <div className="col-xs-12">
+                                                            <input id="peso" type="number" className="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Altura (m)</th>
+                                            <th>Comprimento pernas (m)</th>
+                                            <th>Comprimento Braços (m)</th>
+                                        </tr>
+                                    </tbody><tbody>
+                                        <tr>
+                                            <td>
+                                                <div className="box-body">
+                                                    <div className="row">
+                                                        <div className="col-xs-12">
+                                                            <input id="altura" type="number" className="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div className="box-body">
+                                                    <div className="row">
+                                                        <div className="col-xs-12">
+                                                            <input id="comp_p" type="number" className="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div className="box-body">
+                                                    <div className="row">
+                                                        <div className="col-xs-12">
+                                                            <input id="comp_b" type="number" className="form-control" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-outline pull-left" data-dismiss="modal">Cancelar</button>
+                                <button onClick={this.salvar} type="button" className="btn btn-outline" data-dismiss="modal">Confirmar
+                              avliação</button>
+                            </div>
                         </div>
-                        {/* /.modal-dialog */}
+                        {/* /.modal-content */}
                     </div>
+                    {/* /.modal-dialog */}
+                </div>
 
 
             </div>
