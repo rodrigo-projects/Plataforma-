@@ -1,10 +1,10 @@
 
 var os = require('os');
-var rpio = require('rpio'); //define uso do rpio
+// var rpio = require('rpio'); //define uso do rpio
 
 
 
-var ledState = 0; //define estado do led
+// var ledState = 0; //define estado do led
 
 
 

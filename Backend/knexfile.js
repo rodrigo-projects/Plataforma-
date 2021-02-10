@@ -8,10 +8,10 @@ module.exports = {
   connection: {
     database: 'teste',
     user:     'postgres',
-    password: '123456'
+    password: '123654'
   },
   pool: {
-    min: 2,
+    min: 1,
     max: 20
   },
   migrations: {
