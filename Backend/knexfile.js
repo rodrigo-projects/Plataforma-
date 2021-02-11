@@ -11,7 +11,7 @@ module.exports = {
     password: '123654'
   },
   pool: {
-    min: 1,
+    min: 2,
     max: 20
   },
   migrations: {

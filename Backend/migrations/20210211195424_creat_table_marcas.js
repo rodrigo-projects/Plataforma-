@@ -1,5 +1,4 @@
-
-  exports.up = function (knex, Promise) {
+exports.up = function (knex, Promise) {
     return knex.schema.createTable('marcas', table => {
         table.increments('id').primary()
         table.string('marca').notNull().unique()
