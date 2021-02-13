@@ -30,9 +30,12 @@ module.exports = app => {
                         console.log(user),
 
                         res.json(user))
-                    .catch(err => res.json('Falha'))
+                    .catch(
+                        console.log("erro!!!"),
+                        err => res.json('Falha'))
             }
         } catch (msg) {
+            console.log("erro!!!")
             return res.json(msg)
         }
 
