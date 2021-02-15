@@ -295,82 +295,44 @@ export default class controleDireto extends Component {
                                             <div className="col-md-12">
                                                 {/* Custom Tabs (Pulled to the right) */}
                                                 <div className="nav-tabs-custom">
-                                                    <ul className="nav nav-tabs pull-right">
-                                                        <li className="active"><a href="#tab_1-1" data-toggle="tab">Banco</a></li>
-                                                        <li><a href="#tab_2-2" data-toggle="tab">Volante</a></li>
-                                                        <li><a href="#tab_3-3" data-toggle="tab">Pedaleira</a></li>
-                                                        <li className="pull-left header"> Selecionar equipamento</li>
-                                                    </ul>
-                                                    <div className="tab-content">
-                                                        <div className="tab-pane active" id="tab_1-1">
-                                                            <div className="box box-primary">
-                                                                <div className="box-header with-border">
-                                                                    <h3 className="box-title">Eixo X - Banco</h3>
-                                                                </div>
-                                                                <div className="box-body">
-                                                                    <div className="row">
-                                                                        <div className="col-xs-6">
-                                                                            <input type="number" id="bx" className="form-control" placeholder="aqui!!!" />
-                                                                        </div>
-                                                                        {/* <div class="col-xs-6">
-                            <input type="number" id="rbx" class="form-control" placeholder="Eixo X"
-                              onchange="atualizaRangeRbx(this)">
-                            <form class="multi-range-field my-5 pb-5">
-                              <input id="multi1" class="multi-range" type="range" onchange="atualizaRbx(this)" />
-                            </form>
-                          </div> */}
-                                                                    </div>
-                                                                </div>
-                                                                {/* /.box-body */}
-                                                            </div>
-                                                            {/* /.box */}
-                                                        </div>
-                                                        {/* /.tab-pane */}
-                                                        <div className="tab-pane" id="tab_2-2">
-                                                            <div className="box box-primary">
-                                                                <div className="box-header with-border">
-                                                                    <h3 className="box-title">Eixos X ; Angular - Volante</h3>
-                                                                </div>
-                                                                <div className="box-body">
-                                                                    <div className="row">
-                                                                        <div className="col-xs-6">
-                                                                            <input type="number" id="vx" className="form-control" placeholder="Eixo X" />
-                                                                        </div>
-                                                                        {/* <div class="col-xs-6">
-                            <input type="number" id="rvx" class="form-control" placeholder="Eixo X"
-                            onchange="atualizaRangeRbx(this)">
-                            <form class="multi-range-field my-5 pb-5">
-                               <input id="multi1" class="multi-range" type="range" onchange="atualizaRbx(this)" />
-                            </form>
-                          </div> */}
-                                                                        <div className="col-xs-6">
-                                                                            <input type="number" id="vangular" className="form-control" placeholder="Eixo angular" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {/* /.box-body */}
-                                                            </div>
-                                                        </div>
-                                                        {/* /.tab-pane */}
-                                                        <div className="tab-pane" id="tab_3-3">
-                                                            <div className="box box-primary">
-                                                                <div className="box-header with-border">
-                                                                    <h3 className="box-title">Eixos X ; Z - Pedaleira</h3>
-                                                                </div>
-                                                                <div className="box-body">
-                                                                    <div className="row">
-                                                                        <div className="col-xs-6">
-                                                                            <input type="number" id="px" className="form-control" placeholder="Eixo X" />
-                                                                        </div>
-                                                                        <div className="col-xs-6">
-                                                                            <input type="number" id="pz" className="form-control" placeholder="Eixo Z" />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                {/* /.box-body */}
-                                                            </div>
-                                                        </div>
+                                                <br />
+                                            <label>Eixo X - Banco</label>
+                                            <br />
+                                            <div className="box-body">
+                                                <div className="row">
+                                                    <div className="col-xs-4">
+                                                        <input id="bx" type="number" className="form-control" placeholder="Eixo X" />
                                                     </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <label>Eixos X ; angular - Volante</label>
+                                            <br />
+                                            <div className="box-body">
+                                                <div className="row">
+                                                    <div className="col-xs-4">
+                                                        <input id="vx" type="number" className="form-control" placeholder="Eixo X" />
+                                                    </div>
+                                                    <div className="col-xs-4">
+                                                        <input id="vangular" type="number" className="form-control" placeholder="angular" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <label>Eixos X ; Z - Pedaleira</label>
+                                            <br />
+                                            <div className="box-body">
+                                                <div className="row">
+                                                    <div className="col-xs-4">
+                                                        <input id="px" type="number" className="form-control" placeholder="Eixo X" />
+                                                    </div>
+                                                    <div className="col-xs-4">
+                                                        <input id="pz" type="number" className="form-control" placeholder="Eixo Z" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                      
+                                                    
                                                     <div className="box-body">
                                                         <div className="row">
                                                             <div className="col-xs-2">
