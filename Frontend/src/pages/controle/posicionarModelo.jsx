@@ -26,6 +26,12 @@ export default class posicionarVeiculo extends Component {
 
 
 
+// componentDidUpdate(){
+    // axios.get(`http://localhost:3001/consultar_carros`)
+    // .then(resp => {
+    //     this.setState({ list2: resp.data })
+    // })
+// }
 
     componentWillMount() {
 
@@ -276,7 +282,7 @@ export default class posicionarVeiculo extends Component {
                                             <div className="form-group">
                                                 <div id="app" className="form-group">
                                                     <label>Automóvel</label>
-                                                    <select  class="ls-select" id="ref_carro" className="form-control select2"
+                                                    <select id="ref_carro" className="form-control select2"
                                                         onChange={e => this.att(e)}
                                                         style={{ width: '100%' }}>
                                                   
