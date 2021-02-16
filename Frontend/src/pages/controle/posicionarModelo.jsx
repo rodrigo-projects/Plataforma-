@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+
 import ReactNipple from 'react-nipple';
 import DebugView from 'react-nipple/lib/DebugView';
 import axios from 'axios'
@@ -238,10 +239,18 @@ export default class posicionarVeiculo extends Component {
     }
 
 
-
+    att(e) {
+        var select = document.getElementById('ref_carro');
+        this.setState({ bx: this.state.list2[select.selectedIndex].bx })
+        this.setState({ vx: this.state.list2[select.selectedIndex].vx })
+        this.setState({ vangular: this.state.list2[select.selectedIndex].vangular })
+        this.setState({ px: this.state.list2[select.selectedIndex].px })
+        this.setState({ pz: this.state.list2[select.selectedIndex].pz })
+    }
 
 
     render() {
+        const { bx, vx, vangular, px, pz } = this.state
         return (
             <div>
                 <div className="content-wrapper">
@@ -267,11 +276,14 @@ export default class posicionarVeiculo extends Component {
                                             <div className="form-group">
                                                 <div id="app" className="form-group">
                                                     <label>Automóvel</label>
-                                                    <select id="ref_carro" className="form-control select2" style={{ width: '100%' }}>
-
+                                                    <select  class="ls-select" id="ref_carro" className="form-control select2"
+                                                        onChange={e => this.att(e)}
+                                                        style={{ width: '100%' }}>
+                                                  
                                                         {this.state.list2.map((option) => (
                                                             <option value={option.carro}>{option.carro}</option>
                                                         ))}
+                                                          <option value="" ></option> 
                                                     </select>
 
                                                 </div>
@@ -283,7 +295,7 @@ export default class posicionarVeiculo extends Component {
                                                     <div className="row">
                                                         <div className="col-xs-4">
                                                             <input id="bx" type="number" className="form-control" placeholder="Eixo X"
-                                                            disabled
+                                                                disabled value={bx}
                                                             />
                                                         </div>
                                                     </div>
@@ -294,10 +306,11 @@ export default class posicionarVeiculo extends Component {
                                                 <div className="box-body">
                                                     <div className="row">
                                                         <div className="col-xs-4">
-                                                            <input disabled id="vx" type="number" className="form-control" placeholder="Eixo X" />
+                                                            <input disabled id="vx" type="number" className="form-control" placeholder="Eixo X" 
+                                                            value={vx} />
                                                         </div>
                                                         <div className="col-xs-4">
-                                                            <input disabled id="vangular" type="number" className="form-control" placeholder="angular" />
+                                                            <input disabled id="vangular" type="number" className="form-control" placeholder="angular" value={vangular} />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -307,10 +320,10 @@ export default class posicionarVeiculo extends Component {
                                                 <div className="box-body">
                                                     <div className="row">
                                                         <div className="col-xs-4">
-                                                            <input disabled id="px" type="number" className="form-control" placeholder="Eixo X" />
+                                                            <input disabled id="px" type="number" className="form-control" placeholder="Eixo X" value={px}/>
                                                         </div>
                                                         <div className="col-xs-4">
-                                                            <input disabled id="pz" type="number" className="form-control" placeholder="Eixo Z" />
+                                                            <input disabled id="pz" type="number" className="form-control" placeholder="Eixo Z" value={pz}/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -319,7 +332,7 @@ export default class posicionarVeiculo extends Component {
                                             <div className="box-body">
                                                 <div className="row">
                                                     <div className="col-xs-2">
-                                                        <button className="btn btn-block btn-primary" type="button" onClick={this.test}>Mover</button>
+                                                        <button className="btn btn-block btn-primary" type="button" onClick={this.mover}>Mover</button>
 
                                                     </div>
                                                     {this.avRender()}
