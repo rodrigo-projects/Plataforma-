@@ -26,12 +26,12 @@ export default class posicionarVeiculo extends Component {
 
 
 
-// componentDidUpdate(){
+    // componentDidUpdate(){
     // axios.get(`http://localhost:3001/consultar_carros`)
     // .then(resp => {
     //     this.setState({ list2: resp.data })
     // })
-// }
+    // }
 
     componentWillMount() {
 
@@ -39,6 +39,8 @@ export default class posicionarVeiculo extends Component {
             .then(resp => {
                 this.setState({ list2: resp.data })
             })
+
+        
 
     }
 
@@ -285,11 +287,11 @@ export default class posicionarVeiculo extends Component {
                                                     <select id="ref_carro" className="form-control select2"
                                                         onChange={e => this.att(e)}
                                                         style={{ width: '100%' }}>
-                                                  
+
                                                         {this.state.list2.map((option) => (
                                                             <option value={option.carro}>{option.carro}</option>
                                                         ))}
-                                                          <option value="" ></option> 
+                                                        <option value="" ></option>
                                                     </select>
 
                                                 </div>
@@ -312,8 +314,8 @@ export default class posicionarVeiculo extends Component {
                                                 <div className="box-body">
                                                     <div className="row">
                                                         <div className="col-xs-4">
-                                                            <input disabled id="vx" type="number" className="form-control" placeholder="Eixo X" 
-                                                            value={vx} />
+                                                            <input disabled id="vx" type="number" className="form-control" placeholder="Eixo X"
+                                                                value={vx} />
                                                         </div>
                                                         <div className="col-xs-4">
                                                             <input disabled id="vangular" type="number" className="form-control" placeholder="angular" value={vangular} />
@@ -326,10 +328,10 @@ export default class posicionarVeiculo extends Component {
                                                 <div className="box-body">
                                                     <div className="row">
                                                         <div className="col-xs-4">
-                                                            <input disabled id="px" type="number" className="form-control" placeholder="Eixo X" value={px}/>
+                                                            <input disabled id="px" type="number" className="form-control" placeholder="Eixo X" value={px} />
                                                         </div>
                                                         <div className="col-xs-4">
-                                                            <input disabled id="pz" type="number" className="form-control" placeholder="Eixo Z" value={pz}/>
+                                                            <input disabled id="pz" type="number" className="form-control" placeholder="Eixo Z" value={pz} />
                                                         </div>
                                                     </div>
                                                 </div>

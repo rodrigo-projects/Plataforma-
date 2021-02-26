@@ -1,0 +1,4 @@
+Rodrigo Rafael de Sousa
+Utilize o ambiente de execução Node.js
+Backend - Instale as dependências e configure o arquivo knexfile.js para conectar ao seu banco de dados postgreSQL
+Frentend - Instale as dependências

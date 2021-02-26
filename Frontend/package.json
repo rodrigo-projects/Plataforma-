@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.21.1",
+    "faker": "^5.4.0",
     "nipplejs": "^0.8.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -16,6 +17,7 @@
     "react-router": "4.2.0",
     "react-router-dom": "4.2.2",
     "react-scripts": "^4.0.2",
+    "react-smart-data-table": "^0.9.0",
     "recharts": "^1.8.5",
     "sweetalert2": "^10.8.1",
     "webpack": "4.44.2"
