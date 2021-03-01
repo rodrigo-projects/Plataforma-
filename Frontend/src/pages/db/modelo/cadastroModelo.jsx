@@ -39,8 +39,9 @@ export default class cadastroModelo extends Component {
     cadastro_modelo() {
 
         const user2 = this.state.user2
+        user2.ref_marca=document.getElementById('ref_marca').value ;
         // const metodo = user2.id ? false : true
-
+        console.log(user2)
 
 
 
@@ -269,7 +270,8 @@ export default class cadastroModelo extends Component {
                                             </div>
                                         </div>
                                         <div className="col-xs-6">
-                                            <button type="submit" onClick={e => this.cadastro_modelo(e)} className="btn btn-block btn-primary">cadastrar</button>
+                                            <button onClick={e => this.cadastro_modelo(e)}
+                                             className="btn btn-block btn-primary">cadastrar</button>
                                         </div>
                                     </div>
                                     {/* /.box-body */}
