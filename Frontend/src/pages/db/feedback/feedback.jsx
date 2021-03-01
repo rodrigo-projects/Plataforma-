@@ -115,55 +115,10 @@ export default class feedback extends Component {
   }
 
 
-  renderGraf() {
-    return (
-      <Chart
-      width={'600px'}
-      height={'400px'}
-      chartType="Scatter"
-      loader={<div>Loading Chart</div>}
-      data={[
-        ['Altura', 'Hours Studied', 'Final'],
-        [0, 0, 67],
-        [1, 1, 88],
-        [2, 2, 77],
-        [3, 3, 93],
-        [4, 4, 85],
-        [5, 5, 91],
-        [6, 6, 71],
-        [7, 7, 78],
-        [8, 8, 93],
-        [9, 9, 80],
-        [10, 10, 82],
-      ]}
-      options={{
-        // Material design options
-        chart: {
-          title: "Students' Final Grades",
-          subtitle: 'based on hours studied',
-        },
-        width: 800,
-        height: 500,
-        series: {
-          0: { axis: 'hours studied' },
-          1: { axis: 'final grade' },
-        },
-        axes: {
-          y: {
-            'hours studied': { label: 'Hours Studied' },
-            'final grade': { label: 'Final Exam Grade' },
-          },
-        },
-      }}
-      rootProps={{ 'data-testid': '4' }}
-      legendToggle
-    />
-    );
-  }
 
   render() {
     return (
-        <div>
+
 
           <div className="content-wrapper">
             {/* Content Header (Page header) */}
@@ -177,18 +132,7 @@ export default class feedback extends Component {
 
 
 
-
-            <div className="col-md-8">
-              {/* general form elements */}
-              <div className="box box-primary">
-                <div className="box-header with-border">
-                  <h3 className="box-title">Tabela</h3>
-                </div>
-                <div className="box-body">
-                  <section>   {this.renderGraf()}</section>
-                </div>
-
-              </div>      </div> </div>      </div>
+      </div>
 
 
     )

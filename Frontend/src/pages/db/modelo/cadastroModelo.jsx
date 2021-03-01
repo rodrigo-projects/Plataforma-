@@ -3,16 +3,17 @@ import axios from 'axios';
 const initialState = {
     user: { marca: '', descrição: '' },
     user2: {
-    carro: '', 
-    descrição: '',
-    bx: '',
-    vx: '',
-    vangular: '',
-    px: '',
-    pz: '',
-    ref_marca: '', },
+        carro: '',
+        descrição: '',
+        bx: '',
+        vx: '',
+        vangular: '',
+        px: '',
+        pz: '',
+        ref_marca: '',
+    },
     list: [],
-    list2:[]
+    list2: []
 }
 export default class cadastroModelo extends Component {
     state = { ...initialState }
@@ -29,42 +30,25 @@ export default class cadastroModelo extends Component {
             })
     }
 
+    load(user2) {
+        this.setState({ user2 })
+    }
+
+
+
     cadastro_modelo() {
 
-        const user2 = {
-            carro: '', 
-            descrição: '',
-            bx: '',
-            vx: '',
-            vangular: '',
-            px: '',
-            pz: '',
-            ref_marca: '',
-        }
-        user2.carro = document.getElementById('carro').value; 
-
-        user2.descrição = document.getElementById('descrição').value;
-        user2.bx = document.getElementById('bx').value;
-        user2.vx = document.getElementById('vx').value;
-
-        user2.vangular = document.getElementById('vangular').value;
-
-        user2.px = document.getElementById('px').value;
-
-        user2.pz = document.getElementById('pz').value;
-
-        user2.ref_marca = document.getElementById('ref_marca').value;
+        const user2 = this.state.user2
+        // const metodo = user2.id ? false : true
 
 
 
 
-        // url = sessionStorage.url
-        // const user = this.state.user
         axios.post(`http://localhost:3001/cadastrar_carro`, user2)
             .then(resp => {
-                if(resp.data.carro){
-                const list2 = this.getUpdatedList2(resp.data)
-                this.setState({ user2: initialState.user2, list2 })
+                if (resp.data.carro) {
+                    const list2 = this.getUpdatedList2(resp.data)
+                    this.setState({ user2: initialState.user2, list2 })
                 }
             })
 
@@ -81,15 +65,15 @@ export default class cadastroModelo extends Component {
     }
 
     getUpdatedList2(user2) {
-        const list2 = this.state.list2
-        // const list = this.state.list.filter(u => u.id !== user.id)
+        // const list2 = this.state.list2
+        const list2 = this.state.list2.filter(u => u.id !== user2.id)
         list2.unshift(user2)
         return list2
     }
 
     updateField(event) {
         const user2 = { ...this.state.user2 }
-        user2[event.target.carro] = event.target.value
+        user2[event.target.id] = event.target.value
         this.setState({ user2 })
     }
 
@@ -97,7 +81,7 @@ export default class cadastroModelo extends Component {
     renderTable() {
         return (
             <div className="col-md-6">
-                {/* general form elements */} 
+                {/* general form elements */}
                 <div className="box box-primary">
                     <div className="box-header with-border">
                         <h3 className="box-title">Tabela</h3>
@@ -105,25 +89,25 @@ export default class cadastroModelo extends Component {
                     <div className="box-body">
                         {/* <div className="table-responsive"> */}
                         <table id="example2" class="table table-bordered table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Marca</th>
-                                        <th>Modelo</th>
-                                        <th>Descrição</th>
-                                        <th>Banco</th>
-                                        <th>Volante</th>
-                                        <th>Pedaleira</th>
-                                        <th>Editar</th>
-                                        <th>Remover</th>
+                            <thead>
+                                <tr>
+                                    <th>Marca</th>
+                                    <th>Modelo</th>
+                                    <th>Descrição</th>
+                                    <th>Banco</th>
+                                    <th>Volante</th>
+                                    <th>Pedaleira</th>
+                                    <th>Editar</th>
+                                    <th>Remover</th>
 
 
 
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                    {this.renderRows()}
-                                </tbody>
-                            </table>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                {this.renderRows()}
+                            </tbody>
+                        </table>
                         {/* </div> */}
                     </div> </div> </div>
         )
@@ -143,7 +127,7 @@ export default class cadastroModelo extends Component {
 
 
 
-               
+
                     <td>
                         <button className="btn btn-warning"
                             onClick={() => this.load(user2)}>
@@ -212,11 +196,19 @@ export default class cadastroModelo extends Component {
                                             </div>
                                             <label>Modelo</label>
                                             <br />
-                                            <input id="carro" className="form-control" type="text" />
+                                            <input className="form-control" type="text"
+                                                carro="carro"
+                                                value={this.state.user2.carro}
+                                                onChange={e => this.updateField(e)}
+                                            />
                                             <br />
                                             <label>Descrição</label>
                                             <br />
-                                            <textarea id="descrição" className="form-control" rows={3} defaultValue={""} />
+                                            <textarea className="form-control" rows={3} defaultValue={""}
+                                                descrição="descrição"
+                                                value={this.state.user2.descrição}
+                                                onChange={e => this.updateField(e)}
+                                            />
                                             <br />
                                             <br />
                                             <label>Eixo X - Banco</label>
@@ -224,7 +216,11 @@ export default class cadastroModelo extends Component {
                                             <div className="box-body">
                                                 <div className="row">
                                                     <div className="col-xs-4">
-                                                        <input id="bx" type="number" className="form-control" placeholder="Eixo X" />
+                                                        <input type="number" className="form-control" placeholder="Eixo X"
+                                                            bx="bx"
+                                                            value={this.state.user2.bx}
+                                                            onChange={e => this.updateField(e)}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -234,10 +230,18 @@ export default class cadastroModelo extends Component {
                                             <div className="box-body">
                                                 <div className="row">
                                                     <div className="col-xs-4">
-                                                        <input id="vx" type="number" className="form-control" placeholder="Eixo X" />
+                                                        <input type="number" className="form-control" placeholder="Eixo X"
+                                                            vx="vx"
+                                                            value={this.state.user2.vx}
+                                                            onChange={e => this.updateField(e)}
+                                                        />
                                                     </div>
                                                     <div className="col-xs-4">
-                                                        <input id="vangular" type="number" className="form-control" placeholder="angular" />
+                                                        <input type="number" className="form-control" placeholder="angular"
+                                                            vangular="vangular"
+                                                            value={this.state.user2.vangular}
+                                                            onChange={e => this.updateField(e)}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -247,10 +251,18 @@ export default class cadastroModelo extends Component {
                                             <div className="box-body">
                                                 <div className="row">
                                                     <div className="col-xs-4">
-                                                        <input id="px" type="number" className="form-control" placeholder="Eixo X" />
+                                                        <input type="number" className="form-control" placeholder="Eixo X"
+                                                            px="px"
+                                                            value={this.state.user2.px}
+                                                            onChange={e => this.updateField(e)}
+                                                        />
                                                     </div>
                                                     <div className="col-xs-4">
-                                                        <input id="pz" type="number" className="form-control" placeholder="Eixo Z" />
+                                                        <input type="number" className="form-control" placeholder="Eixo Z"
+                                                            pz="pz"
+                                                            value={this.state.user2.pz}
+                                                            onChange={e => this.updateField(e)}
+                                                        />
                                                     </div>
                                                 </div>
                                             </div>
@@ -260,15 +272,15 @@ export default class cadastroModelo extends Component {
                                         </div>
                                     </div>
                                     {/* /.box-body */}
-                                    
+
                                 </div>
                             </div>
                             <section>   {this.renderTable()}</section>
                         </div>
-                        
-                     
-                        </section>
-                 
+
+
+                    </section>
+
 
                 </div>
             </div>
