@@ -72,8 +72,9 @@ export default class cadastroModelo extends Component {
     }
 
     updateField(event) {
+        console.log(event.target)
         const user2 = { ...this.state.user2 }
-        user2[event.target.id] = event.target.value
+        user2[event.target.name] = event.target.value
         this.setState({ user2 })
     }
 
@@ -197,7 +198,7 @@ export default class cadastroModelo extends Component {
                                             <label>Modelo</label>
                                             <br />
                                             <input className="form-control" type="text"
-                                                carro="carro"
+                                                name="carro"
                                                 value={this.state.user2.carro}
                                                 onChange={e => this.updateField(e)}
                                             />
@@ -205,7 +206,7 @@ export default class cadastroModelo extends Component {
                                             <label>Descrição</label>
                                             <br />
                                             <textarea className="form-control" rows={3} defaultValue={""}
-                                                descrição="descrição"
+                                                name="descrição"
                                                 value={this.state.user2.descrição}
                                                 onChange={e => this.updateField(e)}
                                             />
@@ -217,7 +218,7 @@ export default class cadastroModelo extends Component {
                                                 <div className="row">
                                                     <div className="col-xs-4">
                                                         <input type="number" className="form-control" placeholder="Eixo X"
-                                                            bx="bx"
+                                                            name="bx"
                                                             value={this.state.user2.bx}
                                                             onChange={e => this.updateField(e)}
                                                         />
@@ -231,14 +232,14 @@ export default class cadastroModelo extends Component {
                                                 <div className="row">
                                                     <div className="col-xs-4">
                                                         <input type="number" className="form-control" placeholder="Eixo X"
-                                                            vx="vx"
+                                                            name="vx"
                                                             value={this.state.user2.vx}
                                                             onChange={e => this.updateField(e)}
                                                         />
                                                     </div>
                                                     <div className="col-xs-4">
                                                         <input type="number" className="form-control" placeholder="angular"
-                                                            vangular="vangular"
+                                                            name="vangular"
                                                             value={this.state.user2.vangular}
                                                             onChange={e => this.updateField(e)}
                                                         />
@@ -252,14 +253,14 @@ export default class cadastroModelo extends Component {
                                                 <div className="row">
                                                     <div className="col-xs-4">
                                                         <input type="number" className="form-control" placeholder="Eixo X"
-                                                            px="px"
+                                                            name="px"
                                                             value={this.state.user2.px}
                                                             onChange={e => this.updateField(e)}
                                                         />
                                                     </div>
                                                     <div className="col-xs-4">
                                                         <input type="number" className="form-control" placeholder="Eixo Z"
-                                                            pz="pz"
+                                                            name="pz"
                                                             value={this.state.user2.pz}
                                                             onChange={e => this.updateField(e)}
                                                         />
