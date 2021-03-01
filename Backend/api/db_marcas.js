@@ -25,13 +25,10 @@ module.exports = app => {
 
                 app.db('marcas')
                     .insert(user)
-                    .then(_ => 
+                    .then(_ =>
                         console.log("enviado:"),
-                        console.log(user),
-
                         res.json(user))
                     .catch(
-                        console.log("erro!!!"),
                         err => res.json('Falha'))
             }
         } catch (msg) {
@@ -74,9 +71,9 @@ module.exports = app => {
 
         const user = { ...req.body }
         console.log(user)
-
+        console.log("editando")
         try {
-            exists(user.edit, 'Marca para editar não informada')
+            exists(user.id, 'Marca para editar não informada')
             exists(user.marca, 'Novo nome da marca não informado')
             exists(user.descrição, 'Nova descrição não informada')
 
@@ -84,15 +81,15 @@ module.exports = app => {
 
 
             const userFromDB = await app.db('marcas')
-                .where({ marca: user.edit }).first()
+                .where({ id: user.id }).first()
 
             console.log(userFromDB)
 
             if (userFromDB) {
                 app.db('marcas')
                     .update({ marca: user.marca, descrição: user.descrição })
-                    .where({ marca: user.edit })
-                    .then(_ => res.json('ok'))
+                    .where({ id: user.id })
+                    .then(_ => res.json(user))
                     .catch(err => res.json('falha'))
             }
             else {

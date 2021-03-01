@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import './seta.css'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+
+
+
+
+// const baseUrl = 'http://localhost:3001/'
 
 const initialState = {
     user: { marca: '', descrição: '' },
     list: []
-} 
-
-
-
+}
 
 export default class cadastroMarca extends Component {
     state = { ...initialState }
@@ -44,37 +45,53 @@ export default class cadastroMarca extends Component {
     }
     cadastro_m() {
 
-        const user = {
-            marca: '',
-            descrição: '',
+        const user = this.state.user
+        const metodo=user.id ? false : true
+        if (metodo) {
+
+            axios.post(`http://localhost:3001/cadastrar_marca`, user)
+                .then(resp => {
+                    if (resp.data.marca) {
+                        const list = this.getUpdatedList(resp.data)
+                        this.setState({ user: initialState.user, list })
+                        Swal.fire({
+                            title: 'Cadastrado',
+                            text: 'Cadastro efetuado',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        })
+                    } else {
+                        Swal.fire({
+                            title: 'Erro',
+                            text: 'Cadastro não efetuado',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+                    }
+                })
         }
-        user.marca = document.getElementById('marca').value;
-
-        user.descrição = document.getElementById('descrição').value;
-
-        // url = sessionStorage.url
-        // const user = this.state.user
-        axios.post(`http://localhost:3001/cadastrar_marca`, user)
+        else{
+            axios.post(`http://localhost:3001/editar_marca`, user)
             .then(resp => {
-                if(resp.data.marca){
-                const list = this.getUpdatedList(resp.data)
-                this.setState({ user: initialState.user, list })
-                Swal.fire({
-                    title: 'Cadastrado',
-                    text: 'Cadastro efetuado',
-                    icon: 'success',
-                    confirmButtonText: 'Ok'
-                  })
-                }else{
+                if (resp.data.marca) {
+                    const list = this.getUpdatedList(resp.data)
+                    this.setState({ user: initialState.user, list })
+                    Swal.fire({
+                        title: 'Editado',
+                        text: 'Edição efetuada',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                } else {
                     Swal.fire({
                         title: 'Erro',
-                        text: 'Cadastro não efetuado',
+                        text: 'Edição não efetuada',
                         icon: 'error',
                         confirmButtonText: 'Ok'
-                      }) 
+                    })
                 }
             })
-
+        }
     }
 
 
@@ -89,21 +106,28 @@ export default class cadastroMarca extends Component {
                     text: 'Banco de dados',
                     icon: 'success',
                     confirmButtonText: 'Ok'
-                  })
+                })
             })
 
     }
 
     getUpdatedList(user) {
-        const list = this.state.list
-        // const list = this.state.list.filter(u => u.id !== user.id)
+        // const list = this.state.list
+        const list = this.state.list.filter(u => u.id !== user.id)
         list.unshift(user)
         return list
     }
 
-    updateField(event) {
+    updateField(event, campo) {
         const user = { ...this.state.user }
-        user[event.target.marca] = event.target.value
+
+        if (campo)
+            user.marca = event.target.value
+        else
+            user.descrição = event.target.value
+     
+
+
         this.setState({ user })
     }
 
@@ -114,22 +138,24 @@ export default class cadastroMarca extends Component {
                     <div className="form-group">
                         <label>Marca</label>
 
-                        <input id="marca" type="text" className="form-control"
+                        <input type="text" className="form-control"
                             marca="marca"
-                            // value={this.state.user.marca}
-                            onChange={e => this.updateField(e)}
+                            value={this.state.user.marca}
+                            onChange={e => this.updateField(e, true)}
                             placeholder="Digite a marca" />
 
                         <label>Descrição</label>
 
-                        <input id="descrição" type="text" className="form-control"
+                        <input type="text" className="form-control"
                             descrição="descrição"
-                            // value={this.state.user.descrição}
-                            onChange={e => this.updateField(e)}
+                            value={this.state.user.descrição}
+                            onChange={e => this.updateField(e, false)}
                             placeholder="Digite a descrição"
                         />
 
+                        <p>
 
+                        </p>
                         <div className="col-xs-3">
                             <button className="btn btn-primary"
                                 onClick={e => this.cadastro_m(e)}
@@ -208,7 +234,7 @@ export default class cadastroMarca extends Component {
                     <td>{user.descrição}</td>
                     <td>
                         <button className="btn btn-warning"
-                            onClick={() => this.editar_m(user)}>
+                            onClick={() => this.load(user)}>
                             <i className="fa fa-pencil">
 
                             </i>
@@ -227,37 +253,37 @@ export default class cadastroMarca extends Component {
     render() {
 
         return (
-                <div>
-                    <div className="content-wrapper">
-                        <section className="content-header">
-                            <h1>Cadastros</h1>
-                            <ol className="breadcrumb"> 
-                                <li><a href="#"><i className="fa fa-files-o" /> Banco de dados - Cadastrar - Marca</a></li>
-                            </ol>
-                        </section>
-                        <section className="content">
-                            <div className="row">
-                                {/* left column */}
-                                <div className="col-md-6">
-                                    {/* general form elements */}
-                                    <div className="box box-primary">
-                                        <div className="box-header with-border">
-                                            <h3 className="box-title">Dados da marca</h3>
-                                        </div>
-                                        <div>
-
-                                            {this.rods()}
-
-                                        </div>
-                                        {this.renderTable()} 
+            <div>
+                <div className="content-wrapper">
+                    <section className="content-header">
+                        <h1>Cadastros</h1>
+                        <ol className="breadcrumb">
+                            <li><a href="#"><i className="fa fa-files-o" /> Banco de dados - Cadastrar - Marca</a></li>
+                        </ol>
+                    </section>
+                    <section className="content">
+                        <div className="row">
+                            {/* left column */}
+                            <div className="col-md-6">
+                                {/* general form elements */}
+                                <div className="box box-primary">
+                                    <div className="box-header with-border">
+                                        <h3 className="box-title">Dados da marca</h3>
                                     </div>
+                                    <div>
+
+                                        {this.rods()}
+
+                                    </div>
+                                    {this.renderTable()}
                                 </div>
                             </div>
-                        </section>
-                    </div>
-
-
+                        </div>
+                    </section>
                 </div>
+
+
+            </div>
         )
     }
 }
