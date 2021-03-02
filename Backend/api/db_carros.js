@@ -31,7 +31,7 @@ module.exports = app => {
             else {
                 app.db('carros')
                     .insert(user)
-                    .then(_ => res.json(user),console.log("cadastrado"))
+                    .then(_ => res.json(user), console.log("cadastrado"))
                     .catch(err => res.json('Falha'))
             }
         } catch (msg) {
@@ -70,7 +70,7 @@ module.exports = app => {
 
 
 
-    const editar_carro = (req, res) => {
+    const editar_carro =async (req, res) => {
         const user = { ...req.body }
         console.log(user)
 
@@ -83,22 +83,39 @@ module.exports = app => {
             exists(user.vangular, 'Posição angular do volante não informada')
             exists(user.px, 'Posição da pedaleira em X não informada')
             exists(user.pz, 'Posição da pedaleira em Z não informada')
-            // exists(user.ref_marca, 'Selecione o automóvel para ser editado')
-            app.db('carros')
-                .update({
-                    carro: user.carro,
-                    descrição: user.descrição,
-                    bx: user.bx,
-                    vx: user.vx,
-                    vangular: user.vangular,
-                    px: user.px,
-                    pz: user.pz,
-                    ref_marca: user.ref_marca
-                })
-                .where({ carro: user.edit })
-                .then(_ => res.json('ok'))
-                .catch(err => res.json('falha'))
+            exists(user.ref_marca, 'Selecione o automóvel para ser editado')
+
+            const userFromDB = await app.db('carros')
+                .where({ id: user.id }).first()
+
+            console.log(userFromDB)
+
+
+            if (userFromDB) {
+
+                app.db('carros')
+                    .update({
+                        carro: user.carro,
+                        descrição: user.descrição,
+                        bx: user.bx,
+                        vx: user.vx,
+                        vangular: user.vangular,
+                        px: user.px,
+                        pz: user.pz,
+                        ref_marca: user.ref_marca
+                    })
+                    .where({ id: user.id })
+                    .then(_ => res.json(user))
+                    .catch(err => res.json('falha'))
+
+
+            } else {
+
+                res.json('Marca não consta no banco de dados')
+
+            }
         } catch (msg) {
+            console.log("falha editar")
             return res.json(msg)
 
         }

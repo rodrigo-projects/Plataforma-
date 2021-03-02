@@ -5,11 +5,11 @@ const initialState = {
     user2: {
         carro: '',
         descrição: '',
-        bx: '',
-        vx: '',
-        vangular: '',
-        px: '',
-        pz: '',
+        bx: '0',
+        vx: '0',
+        vangular: '0',
+        px: '0',
+        pz: '0',
         ref_marca: '',
     },
     list: [],
@@ -28,6 +28,9 @@ export default class cadastroModelo extends Component {
             .then(resp => {
                 this.setState({ list: resp.data })
             })
+
+
+
     }
 
     load(user2) {
@@ -39,13 +42,22 @@ export default class cadastroModelo extends Component {
     cadastro_modelo() {
 
         const user2 = this.state.user2
-        user2.ref_marca=document.getElementById('ref_marca').value ;
-        // const metodo = user2.id ? false : true
-        console.log(user2)
+        user2.ref_marca = document.getElementById('ref_marca').value;
 
+        const metodo = user2.id ? false : true
+        if (metodo) {
 
+            axios.post(`http://localhost:3001/cadastrar_carro`, user2)
+                .then(resp => {
+                    if (resp.data.carro) {
+                        const list2 = this.getUpdatedList2(resp.data)
+                        this.setState({ user2: initialState.user2, list2 })
+                    }
+                })
+        }
+        else {
 
-        axios.post(`http://localhost:3001/cadastrar_carro`, user2)
+            axios.post(`http://localhost:3001/editar_carro`, user2)
             .then(resp => {
                 if (resp.data.carro) {
                     const list2 = this.getUpdatedList2(resp.data)
@@ -53,6 +65,7 @@ export default class cadastroModelo extends Component {
                 }
             })
 
+        }
     }
 
     remover(user2) {
@@ -271,7 +284,7 @@ export default class cadastroModelo extends Component {
                                         </div>
                                         <div className="col-xs-6">
                                             <button onClick={e => this.cadastro_modelo(e)}
-                                             className="btn btn-block btn-primary">cadastrar</button>
+                                                className="btn btn-block btn-primary">cadastrar</button>
                                         </div>
                                     </div>
                                     {/* /.box-body */}
