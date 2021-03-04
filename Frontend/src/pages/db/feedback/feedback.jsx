@@ -1,25 +1,90 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-import { Chart } from "react-google-charts";
+import ReactApexChart from "react-apexcharts";
 
 
 const initialState = {
 
-  list2: []
+  list2: [],
+  externalData: null,
 }
+
+// var resultado = [[0, 0]]
+
 export default class feedback extends Component {
 
+  ///////////
 
-  state = { ...initialState }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+
+      series: [{
+        name: "Banco",
+        data: [[0, 0]]
+      }],
+      options: {
+        chart: {
+          height: 350,
+          type: 'scatter',
+          zoom: {
+            enabled: true,
+            type: 'xy'
+          }
+        },
+        xaxis: {
+          tickAmount: 10,
+          labels: {
+            formatter: function (val) {
+              return parseFloat(val).toFixed(1)
+            }
+          }
+        },
+        yaxis: {
+          tickAmount: 7
+        }
+      },
+
+
+    };
+  }
+
+
+
+  ///////////
+  att() {
+
+    const newSeries = [];
+
+    this.state.series.map((s) => {
+      const data = this.state.list2.map(user2 => [user2.px, user2.pz])
+      newSeries.push({ data, name: s.name })
+    })
+
+    this.setState({
+      series: newSeries
+    })
+  }
 
   componentWillMount() {
 
     axios.get(`http://localhost:3001/cad_av`)
       .then(resp => {
         this.setState({ list2: resp.data })
+        // resultado = this.state.list2.map(user2 => [user2.px, user2.pz])
+        // this.initialState.externalData = true
+        this.att();
       })
+
+
+
   }
+  state = { ...initialState }
+
+
 
   getUpdatedList2(user2) {
     const list2 = this.state.list2
@@ -27,6 +92,8 @@ export default class feedback extends Component {
     list2.unshift(user2)
     return list2
   }
+
+
 
   updateField(event) {
     const user2 = { ...this.state.user2 }
@@ -65,7 +132,7 @@ export default class feedback extends Component {
 
                 </tr>
               </thead>
-              <tbody > 
+              <tbody >
                 {this.renderRows()}
               </tbody>
             </table>
@@ -73,6 +140,12 @@ export default class feedback extends Component {
           </div> </div> </div>
     )
   }
+
+
+
+
+
+
 
   renderRows() {
     return this.state.list2.map(user2 => {
@@ -116,20 +189,31 @@ export default class feedback extends Component {
 
 
 
+  renderGraf() {
+    return (
+      <div id="chart">
+        <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
+      </div>
+    )
+  }
+
   render() {
+
     return (
 
 
-          <div className="content-wrapper">
-            {/* Content Header (Page header) */}
-            <section className="content-header">
-              <h1>Avaliações</h1>
-              <ol className="breadcrumb">
-                <li><a href="#"><i className="fa fa-files-o" /> Banco de dados - Cadastrar - Veículo</a></li>
-              </ol>
-            </section>
-            <section>   {this.renderTable()}</section>
+      <div className="content-wrapper">
+        {/* Content Header (Page header) */}
+        <section className="content-header">
+          <h1>Avaliações</h1>
+          <ol className="breadcrumb">
+            <li><a href="#"><i className="fa fa-files-o" /> Banco de dados - Cadastrar - Veículo</a></li>
+          </ol>
+        </section>
 
+
+
+        {this.renderGraf()}
 
 
       </div>
