@@ -23,9 +23,19 @@ export default class feedback extends Component {
     this.state = {
 
       series: [{
-        name: "Banco",
-        data: [[0, 0]]
-      }],
+        name: "Confortável",
+        data: [[,]],
+      },
+
+      {
+        name: "aceitável",
+        data: [[,]]
+      }, {
+        name: "incomodo",
+        data: [[,]]
+      }
+      ],
+
       options: {
         chart: {
           height: 350,
@@ -57,11 +67,49 @@ export default class feedback extends Component {
   ///////////
   att() {
 
-    const newSeries = [];
+    const newSeries = [{
+      name: "Confortável",
+      data: [[,]]
+    },
+
+    {
+      name: "aceitável",
+      data: [[,]]
+    }, {
+      name: "incomodo",
+      data: [[,]]
+    }
+    ]
+    const user = this.state.list2
+    console.log(this.state.list2)
+    const conforto1 = user => user.conforto == "confortável"
+    const valor1 = user.filter(conforto1)
+    const data1 = valor1.map(user1 => [user1.px, user1.pz])
+
+    const conforto2 = user => user.conforto == "aceitável"
+    const valor2 = user.filter(conforto2)
+    const data2 = valor2.map(user2 => [user2.px, user2.pz])
+
+    const conforto3 = user => user.conforto == "incômodo"
+    const valor3 = user.filter(conforto3)
+    const data3 = valor3.map(user2 => [user2.px, user2.pz])
+
+    console.log(valor1)
+    console.log(valor2)
+    console.log(valor3)
 
     this.state.series.map((s) => {
-      const data = this.state.list2.map(user2 => [user2.px, user2.pz])
-      newSeries.push({ data, name: s.name })
+
+      // const data1=valor1.map(user1 => [user1.px, user1.pz])
+      // const data2=valor2.map(user2 => [user2.px, user2.pz])
+      // const data3=valor3.map(user2 => [user2.px, user2.pz])
+
+      // const data = this.state.list2.map(user2 => [user2.px, user2.pz])
+
+      // const data = this.state.list2.map(user2 => [user2.px, user2.pz])
+      newSeries[0].data = data1;
+      newSeries[1].data = data2;
+      newSeries[2].data = data3;
     })
 
     this.setState({
@@ -191,9 +239,25 @@ export default class feedback extends Component {
 
   renderGraf() {
     return (
-      <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
-      </div>
+      
+
+
+<div className="col-md-6">
+        {/* general form elements */}
+        <div className="box box-primary">
+          <div className="box-header with-border">
+            <h3 className="box-title">Tabela</h3>
+          </div>
+          <div className="box-body"></div>
+
+
+
+        <div id="chart">
+          <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
+        </div> 
+       
+        </div> </div> 
+        
     )
   }
 
