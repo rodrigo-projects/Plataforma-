@@ -335,7 +335,7 @@ export default class controleDireto extends Component {
                                                     
                                                     <div className="box-body">
                                                         <div className="row">
-                                                            <div className="col-xs-2">
+                                                            <div className="col-xs-4">
                                                                 <button className="btn btn-block btn-primary" type="button" onClick={this.test}>Mover</button>
 
                                                                 {/* <button type="button" onclick="test()" className="btn btn-block btn-primary">Mover</button> */}
