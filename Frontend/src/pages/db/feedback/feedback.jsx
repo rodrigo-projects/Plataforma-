@@ -305,7 +305,7 @@ export default class feedback extends Component {
       <div>
 
         <div className="row">
-          <div className="col-md-12">
+          <div className="col-md-6">
             <div className="box box-primary">
               <div className="box-header with-border">
                 <h4 className="box-title">Filtrar tabela</h4>
@@ -358,7 +358,7 @@ export default class feedback extends Component {
 
 
             <div className="row">
-              <div className="col-md-12">
+              <div className="col-md-6">
 
 
                 <div className="box box-primary">
@@ -373,7 +373,7 @@ export default class feedback extends Component {
                     </div>
                     <div className="radio">
                       <label>
-                        <input type="radio" name="optionsRadios2" id="op1" defaultValue="option1" />
+                        <input type="radio" name="optionsRadios2" id="op1" defaultValue="" defaultChecked/>
                                 Todos
                               </label>
                     </div>
@@ -404,7 +404,7 @@ export default class feedback extends Component {
                     <td>
                       <div className="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="op5" defaultValue="masculino" />
+                          <input type="radio" name="optionsRadios" id="op5" defaultValue="" defaultChecked />
                                         Ambos
                                       </label>
                       </div>

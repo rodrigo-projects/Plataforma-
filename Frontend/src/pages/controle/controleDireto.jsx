@@ -281,7 +281,7 @@ export default class controleDireto extends Component {
                     </section>
                     <section className="content">
                         <div className="row">
-                            <div className="col-md-12">
+                            <div className="col-md-6">
                                 <div className="box box-primary">
                                     <div className="box-header with-border">
                                         <h3 className="box-title">Inserir posições</h3>

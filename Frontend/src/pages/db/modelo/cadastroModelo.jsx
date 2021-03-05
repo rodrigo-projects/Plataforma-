@@ -23,6 +23,7 @@ export default class cadastroModelo extends Component {
         axios.get(`http://localhost:3001/consultar_carros`)
             .then(resp => {
                 this.setState({ list2: resp.data })
+                console.log(resp.data)
             })
         axios.get(`http://localhost:3001/consultar_marcas`)
             .then(resp => {
