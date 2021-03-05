@@ -65,43 +65,95 @@ export default class feedback extends Component {
 
 
   ///////////
-  att() {
+  att(e) {
+    const set = {
+      conforto: '',
+      sexo: '',
+      idade: '',
+      peso: '',
+      altura: '',
+
+    }
+    if (document.getElementById('op2').checked == true) {
+      set.conforto = 'confortável'
+
+    }
+    else if (document.getElementById('op3').checked == true) {
+      set.conforto = 'aceitável'
+
+    }
+    else if (document.getElementById('op4').checked == true) {
+      set.conforto = 'incômodo'
+
+    } else {
+      set.conforto = true
+    }
+
+
+
+    if (document.getElementById('op6').checked == true) {
+      set.sexo = 'masculino'
+
+    }
+    else if (document.getElementById('op7').checked == true) {
+      set.sexo = 'feminino'
+
+    }
+    else {
+      set.sexo = true
+    }
+
+
+
+
+
 
     const newSeries = [{
-      name: "Confortável",
-      data: [[,]]
-    },
-
-    {
-      name: "aceitável",
-      data: [[,]]
-    }, {
-      name: "incomodo",
+      name: "Filtro",
       data: [[,]]
     }
+      ,
+
+    {
+      name: "Sexo",
+      data: [[,]]
+    },
+    {
+      name: "Todos",
+      data: [[,]]
+    }
+      //  {
+      //   name: "incomodo",
+      //   data: [[,]]
+      // }
     ]
+
+    ////brembo linkdin
     const user = this.state.list2
-    // console.log(this.state.list2)
-    const conforto1 = user => user.conforto == "confortável"
-    const valor1 = user.filter(conforto1)
-    const data1 = valor1.map(user1 => [user1.px, user1.pz])
+    console.log(this.state.list2)
 
-    const conforto2 = user => user.conforto == "aceitável"
-    const valor2 = user.filter(conforto2)
-    const data2 = valor2.map(user2 => [user2.px, user2.pz])
+    const data = user.map(user1 => [user1.px, user1.pz])
 
-    const conforto3 = user => user.conforto == "incômodo"
-    const valor3 = user.filter(conforto3)
-    const data3 = valor3.map(user2 => [user2.px, user2.pz])
+    const conforto = user => user.conforto == set.conforto
+    const valor1 = user.filter(conforto)
+    console.log(valor1)
+    const data1 = valor1.map(user => [user.px, user.pz])
+
+
+    const sexo = valor1 => valor1.sexo == set.sexo
+    const valor2 = valor1.filter(sexo)
+    console.log(valor2)
+    const data2 = valor2.map(user => [user.px, user.pz])
+
 
     // console.log(valor1)
-    // console.log(valor2)
-    // console.log(valor3)
 
     this.state.series.map((s) => {
-      newSeries[0].data = data1;
+
+      // newSeries[0].data = data1;
       newSeries[1].data = data2;
-      newSeries[2].data = data3;
+      // newSeries[2].data = data;
+
     })
 
     this.setState({
@@ -235,44 +287,242 @@ export default class feedback extends Component {
   renderGraf() {
     return (
 
+      <div>
+
+        <div className="row">
+          <div className="col-md-12">
+            <div className="box box-primary">
+              <div className="box-header with-border">
+                <h4 className="box-title">Filtrar tabela</h4>
+              </div>
+              <div className="col-md-6">
+                {/* general form elements */}
+                <div className="box box-primary">
+                  <div className="box-header with-border">
+                    <h3 className="box-title">Banco</h3>
+                  </div>
+                  <div className="box-body"></div>
 
 
-      <div className="col-md-6">
-        {/* general form elements */}
-        <div className="box box-primary">
-          <div className="box-header with-border">
-            <h3 className="box-title">Tabela</h3>
-          </div>
-          <div className="box-body"></div>
 
+                  <div id="chart">
+                    <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
+                  </div>
 
-
-          <div id="chart">
-            <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
-          </div>
-
-        </div> </div>
+                </div> </div></div></div></div></div>
 
     )
   }
+
+
+
 
   render() {
 
     return (
 
 
-      <div className="content-wrapper">
-        {/* Content Header (Page header) */}
-        <section className="content-header">
-          <h1>Avaliações</h1>
-          <ol className="breadcrumb">
-            <li><a href="#"><i className="fa fa-files-o" /> Banco de dados - Cadastrar - Veículo</a></li>
-          </ol>
-        </section>
+      <div>
+
+
+        <div className="content-wrapper">
+          {/* Content Header (Page header) */}
+          <section className="content-header">
+            <h1>
+              Controle direto
+    </h1>
+            <ol className="breadcrumb">
+              <li><a href="#"><i className="fa fa-laptop" /> Controle de posições &gt; Controle direto</a></li>
+            </ol>
+          </section>
 
 
 
-        {this.renderGraf()}
+
+          <section className="content">
+            <div className="row">
+              <div className="col-md-12">
+                <div className="box box-primary">
+                  <div className="box-header with-border">
+                    <h4 className="box-title">Filtrar tabela</h4>
+                  </div>
+                  <div className="box-body">
+                    <div className="box-header">
+                      <h4 className="box-title">Conforto</h4>
+                    </div>
+                    <div className="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios2" id="op1" defaultValue="option1" />
+                                Todos
+                              </label>
+                    </div>
+
+                    <div className="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios2" id="op2" defaultValue="option1" />
+                                Confortável
+                              </label>
+                    </div>
+                    <div className="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios2" id="op3" defaultValue="option2" />
+                                Aceitável
+                              </label>
+                    </div>
+                    <div className="radio">
+                      <label>
+                        <input type="radio" name="optionsRadios2" id="op4" defaultValue="option3" />
+                                Incômodo
+                              </label>
+                    </div>
+
+                    <div className="box-header">
+                      <h4 className="modal-title">Sexo</h4>
+                    </div>
+
+                    <td>
+                      <div className="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="op5" defaultValue="masculino" />
+                                        Ambos
+                                      </label>
+                      </div>
+                      <div className="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="op6" defaultValue="masculino" />
+                                        Masculino
+                                      </label>
+                      </div>
+                      <div className="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="op7" defaultValue="feminino" />
+                                        Feminino
+                                      </label>
+                      </div>
+                    </td>
+                  </div>
+
+
+
+
+{/* 
+                  <div className="modal-header">
+                    <h4 className="modal-title">Peso</h4>
+                  </div>
+
+
+
+                  <div className="col-xs-8 table-responsive">
+                    <table className="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Min.</th>
+                          <th>Máx.</th>
+
+                        </tr>
+                      </thead><tbody>
+                        <tr>
+
+                          <td>
+                            <div className="box-body">
+                              <div className="row">
+                                <div className="col-xs-12">
+                                  <input id="idade" type="number" className="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="box-body">
+                              <div className="row">
+                                <div className="col-xs-12">
+                                  <input id="peso" type="number" className="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+
+ */}
+
+
+{/* 
+                  <div className="col-xs-8 table-responsive">
+                    <div className="modal-header">
+                      <h4 className="modal-title">Altura</h4>
+                    </div>
+
+                    <table className="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Min.</th>
+                          <th>Máx.</th>
+
+                        </tr>
+                      </thead><tbody>
+                        <tr>
+
+                          <td>
+                            <div className="box-body">
+                              <div className="row">
+                                <div className="col-xs-12">
+                                  <input id="idade" type="number" className="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="box-body">
+                              <div className="row">
+                                <div className="col-xs-12">
+                                  <input id="peso" type="number" className="form-control" />
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table> */}
+                    <div className="col-xs-6">
+                      <button className="btn btn-block btn-primary" type="button"
+                        onClick={e => this.att("confortável")}>Gerar tabela</button>
+                    </div>
+           
+
+                  <div className="modal-footer">
+
+                  </div>
+
+                </div>
+                {/* /.modal-content */}
+              </div>
+              {/* /.modal-dialog */}
+
+
+
+
+
+
+
+
+            </div>
+            {this.renderGraf()}
+          </section>
+
+
+
+        </div>
+
+
+
+
+
+
+
 
 
       </div>
@@ -282,3 +532,16 @@ export default class feedback extends Component {
   }
 
 }
+
+// <section className="content-header">
+// <h1>Avaliações</h1>
+// <ol className="breadcrumb">
+//   <li><a href="#"><i className="fa fa-files-o" /> Banco de dados - Cadastrar - Veículo</a></li>
+// </ol>
+// </section>
+
+
+
+// {this.renderGraf1()}
+// {this.renderGraf2()}
+// {this.renderGraf3()}

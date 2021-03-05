@@ -5,6 +5,6 @@ export default props =>
                 <footer className="main-footer">
                     <div className="pull-right hidden-xs">
                     </div>
-                    <strong>Projeto IFMG-FCA 2020</strong>
+                    <strong>Projeto IFMG-FCA 2021</strong>
                 </footer>
             </div>
