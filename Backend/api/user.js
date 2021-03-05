@@ -33,7 +33,7 @@ module.exports = app => {
 
         if (user.bx < 0) {
             user.bx = user.bx * (-1)
-            rpio.write(dir, rpio.HIGH);
+            rpio.write(dir, rpio.LOW);
 
         } else {
             rpio.write(dir, rpio.LOW);
