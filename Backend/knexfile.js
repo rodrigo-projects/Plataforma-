@@ -2,9 +2,9 @@ module.exports = {
   
   client: 'pg',
   connection: {
-    database: 'teste',
+    database: 'fca',
     user:     'postgres',
-    password: '123654'
+    password: '123456'
   },
   pool: {
     min: 2,
