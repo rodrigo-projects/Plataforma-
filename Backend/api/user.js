@@ -44,9 +44,9 @@ module.exports = app => {
         //     rpio.write(dir, rpio.LOW);
 
         // }
-        const temp = 1000
+        const temp = 2.5
 
-        for (var i = 0; i < user.bx ; i++) {
+        for (var i = 0; i < user.bx * 1600; i++) {
             /* On for 1 second */
             rpio.write(pul, rpio.HIGH);
             rpio.msleep(temp);
