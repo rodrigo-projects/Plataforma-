@@ -32,6 +32,9 @@ module.exports = app => {
         console.log("movendo...")
         rpio.write(pul, rpio.HIGH);
         rpio.msleep(1000);
+        rpio.write(pul, rpio.LOW);
+        rpio.msleep(1000);
+        console.log("FIM...")
 
         // if (user.bx < 0) {
         //     user.bx = user.bx * (-1)
