@@ -4,7 +4,7 @@ var rpio = require('rpio'); //define uso do rpio
 
 
 
-var ledState = 0; //define estado do led
+// var ledState = 0; //define estado do led
 var pul =33;
 var dir=32;
 rpio.open(pul, rpio.OUTPUT, rpio.LOW); //define LED como output
@@ -44,9 +44,9 @@ module.exports = app => {
         //     rpio.write(dir, rpio.LOW);
 
         // }
-        const temp = 2.5
+        const temp = 1000
 
-        for (var i = 0; i < user.bx * 1600; i++) {
+        for (var i = 0; i < user.bx ; i++) {
             /* On for 1 second */
             rpio.write(pul, rpio.HIGH);
             rpio.msleep(temp);
