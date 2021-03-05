@@ -1,14 +1,14 @@
 
 var os = require('os');
-// var rpio = require('rpio'); //define uso do rpio
+var rpio = require('rpio'); //define uso do rpio
 
 
 
-// var ledState = 0; //define estado do led
-// var pul =33;
-// var dir=32;
-// rpio.open(pul, rpio.OUTPUT, rpio.LOW); //define LED como output
-// rpio.open(dir, rpio.OUTPUT, rpio.LOW); //define LED como output
+var ledState = 0; //define estado do led
+var pul =33;
+var dir=32;
+rpio.open(pul, rpio.OUTPUT, rpio.LOW); //define LED como output
+rpio.open(dir, rpio.OUTPUT, rpio.LOW); //define LED como output
 
 
 
