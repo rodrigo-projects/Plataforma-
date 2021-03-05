@@ -32,25 +32,26 @@ module.exports = app => {
         console.log("movendo...")
         rpio.write(pul, rpio.HIGH);
         rpio.msleep(1000);
-        if (user.bx < 0) {
-            user.bx = user.bx * (-1)
-            rpio.write(dir, rpio.LOW);
 
-        } else {
-            rpio.write(dir, rpio.LOW);
+        // if (user.bx < 0) {
+        //     user.bx = user.bx * (-1)
+        //     rpio.write(dir, rpio.LOW);
 
-        }
-        const temp = 2.5
+        // } else {
+        //     rpio.write(dir, rpio.LOW);
 
-        for (var i = 0; i < user.bx * 1600; i++) {
-            /* On for 1 second */
-            rpio.write(pul, rpio.HIGH);
-            rpio.msleep(temp);
+        // }
+        // const temp = 2.5
 
-            /* Off for half a second (500ms) */
-            rpio.write(pul, rpio.LOW);
-            rpio.msleep(temp);
-        }
+        // for (var i = 0; i < user.bx * 1600; i++) {
+        //     /* On for 1 second */
+        //     rpio.write(pul, rpio.HIGH);
+        //     rpio.msleep(temp);
+
+        //     /* Off for half a second (500ms) */
+        //     rpio.write(pul, rpio.LOW);
+        //     rpio.msleep(temp);
+        // }
 
         // ledState = !ledState; //troca estado do led
         // if(ledState == 0) rpio.write(33, rpio.HIGH); //acende LED
