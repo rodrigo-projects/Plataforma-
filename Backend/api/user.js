@@ -30,7 +30,8 @@ module.exports = app => {
         const user = { ...req.body }
         console.log(user.bx)
         console.log("movendo...")
-
+        rpio.write(33, rpio.HIGH);
+        rpio.msleep(1000);
         if (user.bx < 0) {
             user.bx = user.bx * (-1)
             rpio.write(dir, rpio.LOW);
