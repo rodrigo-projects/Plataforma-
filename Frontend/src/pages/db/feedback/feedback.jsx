@@ -144,19 +144,25 @@ export default class feedback extends Component {
     const valor2 = valor1.filter(sexo)
     console.log(valor2)
     const data2 = valor2.map(user => [user.px, user.pz])
+    console.log(data2)
+
 
 
     // console.log(valor1)
 
     this.state.series.map((s) => {
-
-      // newSeries[0].data = data1;
-      newSeries[1].data = data2;
+      if (set.sexo === true && set.conforto === true) {
+        newSeries[1].data = data;
+      } else {
+        // newSeries[0].data = data1;
+        newSeries[1].data = data2;
+      }
       // newSeries[2].data = data;
 
     })
 
     this.setState({
+
       series: newSeries
     })
   }
@@ -294,8 +300,8 @@ export default class feedback extends Component {
             <div className="box box-primary">
               <div className="box-header with-border">
                 <h4 className="box-title">Filtrar tabela</h4>
-              </div>
-              <div className="col-md-6">
+              
+              <div className="col-md-12">
                 {/* general form elements */}
                 <div className="box box-primary">
                   <div className="box-header with-border">
@@ -309,7 +315,7 @@ export default class feedback extends Component {
                     <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
                   </div>
 
-                </div> </div></div></div></div></div>
+                </div> </div></div></div></div></div></div>
 
     )
   }
@@ -405,7 +411,7 @@ export default class feedback extends Component {
 
 
 
-{/* 
+                  {/* 
                   <div className="modal-header">
                     <h4 className="modal-title">Peso</h4>
                   </div>
@@ -450,7 +456,7 @@ export default class feedback extends Component {
  */}
 
 
-{/* 
+                  {/* 
                   <div className="col-xs-8 table-responsive">
                     <div className="modal-header">
                       <h4 className="modal-title">Altura</h4>
@@ -487,11 +493,11 @@ export default class feedback extends Component {
                         </tr>
                       </tbody>
                     </table> */}
-                    <div className="col-xs-6">
-                      <button className="btn btn-block btn-primary" type="button"
-                        onClick={e => this.att("confortável")}>Gerar tabela</button>
-                    </div>
-           
+                  <div className="col-xs-6">
+                    <button className="btn btn-block btn-primary" type="button"
+                      onClick={e => this.att("confortável")}>Gerar tabela</button>
+                  </div>
+
 
                   <div className="modal-footer">
 
