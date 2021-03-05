@@ -5,8 +5,8 @@ var rpio = require('rpio'); //define uso do rpio
 
 
 var ledState = 0; //define estado do led
-var pul =33;
-var dir=32;
+var pul =32;
+var dir=33;
 rpio.open(pul, rpio.OUTPUT, rpio.LOW); //define LED como output
 rpio.open(dir, rpio.OUTPUT, rpio.LOW); //define LED como output
 
@@ -30,7 +30,7 @@ module.exports = app => {
         const user = { ...req.body }
         console.log(user.bx)
         console.log("movendo...")
-        rpio.write(33, rpio.HIGH);
+        rpio.write(pul, rpio.HIGH);
         rpio.msleep(1000);
         if (user.bx < 0) {
             user.bx = user.bx * (-1)
@@ -44,11 +44,11 @@ module.exports = app => {
 
         for (var i = 0; i < user.bx * 1600; i++) {
             /* On for 1 second */
-            rpio.write(33, rpio.HIGH);
+            rpio.write(pul, rpio.HIGH);
             rpio.msleep(temp);
 
             /* Off for half a second (500ms) */
-            rpio.write(33, rpio.LOW);
+            rpio.write(pul, rpio.LOW);
             rpio.msleep(temp);
         }
 
