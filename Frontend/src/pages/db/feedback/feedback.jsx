@@ -46,7 +46,7 @@ export default class feedback extends Component {
           }
         },
         xaxis: {
-          tickAmount: 10,
+          tickAmount: 7,
           labels: {
             formatter: function (val) {
               return parseFloat(val).toFixed(1)
@@ -105,23 +105,20 @@ export default class feedback extends Component {
 
 
 
-
-
-
     const newSeries = [{
       name: "Filtro",
-      data: [[,]]
+      data: [[0,0],[70,70]]
     }
       ,
 
-    {
-      name: "Sexo",
-      data: [[,]]
-    },
-    {
-      name: "Todos",
-      data: [[,]]
-    }
+    // {
+    //   name: "Todos",
+    //   data: [[,]]
+    // },
+      // {
+      //   name: "Todos",
+      //   data: [[,]]
+      // }
       //  {
       //   name: "incomodo",
       //   data: [[,]]
@@ -132,34 +129,46 @@ export default class feedback extends Component {
     const user = this.state.list2
     console.log(this.state.list2)
 
-    const data = user.map(user1 => [user1.px, user1.pz])
+    const data = user.map(user1 => [user1.px, user1.pz]) //todos 
+
 
     const conforto = user => user.conforto == set.conforto
     const valor1 = user.filter(conforto)
     console.log(valor1)
-    const data1 = valor1.map(user => [user.px, user.pz])
+    const data1 = valor1.map(user => [user.px, user.pz]) ///filtro de conforto
 
 
-    const sexo = valor1 => valor1.sexo == set.sexo
-    const valor2 = valor1.filter(sexo)
+    const sexo = user => user.sexo == set.sexo
+    const valor2 = user.filter(sexo)
     console.log(valor2)
-    const data2 = valor2.map(user => [user.px, user.pz])
+    const data2 = valor2.map(user => [user.px, user.pz]) ///filtro de sexo
     console.log(data2)
+
+    const sexoConforto = valor1 => valor1.sexo == set.sexo
+    const valor3 = valor1.filter(sexoConforto)
+    console.log(valor3)
+    const data3 = valor3.map(user => [user.px, user.pz]) ///filtro de sexo e conforto
+    console.log(data3)
 
 
 
     // console.log(valor1)
 
     this.state.series.map((s) => {
-      if (set.sexo === true && set.conforto === true) {
-        newSeries[1].data = data;
-      } else {
-        // newSeries[0].data = data1;
-        newSeries[1].data = data2;
-      }
-      // newSeries[2].data = data;
+      if (set.sexo === true && set.conforto === true) { ///todos
+        newSeries[0].data = data;
+      } else if (set.sexo === true && set.conforto !== true) { ///filtro de conforto
+        newSeries[0].data = data1;
 
+      } else if (set.sexo !== true && set.conforto === true) { ///filtro de sexo
+        newSeries[0].data = data2;
+      } else {                                                  //filtro de sexo e conforto
+        newSeries[0].data = data3;
+      }
+
+      // newSeries[1].data = data;
     })
+
 
     this.setState({
 
@@ -300,22 +309,22 @@ export default class feedback extends Component {
             <div className="box box-primary">
               <div className="box-header with-border">
                 <h4 className="box-title">Filtrar tabela</h4>
-              
-              <div className="col-md-12">
-                {/* general form elements */}
-                <div className="box box-primary">
-                  <div className="box-header with-border">
-                    <h3 className="box-title">Banco</h3>
-                  </div>
-                  <div className="box-body"></div>
+
+                <div className="col-md-12">
+                  {/* general form elements */}
+                  <div className="box box-primary">
+                    <div className="box-header with-border">
+                      <h3 className="box-title">Banco</h3>
+                    </div>
+                    <div className="box-body"></div>
 
 
 
-                  <div id="chart">
-                    <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
-                  </div>
+                    <div id="chart">
+                      <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
+                    </div>
 
-                </div> </div></div></div></div></div></div>
+                  </div> </div></div></div></div></div></div>
 
     )
   }
@@ -346,13 +355,19 @@ export default class feedback extends Component {
 
 
           <section className="content">
+
+
             <div className="row">
               <div className="col-md-12">
+
+
                 <div className="box box-primary">
                   <div className="box-header with-border">
                     <h4 className="box-title">Filtrar tabela</h4>
                   </div>
+
                   <div className="box-body">
+
                     <div className="box-header">
                       <h4 className="box-title">Conforto</h4>
                     </div>
