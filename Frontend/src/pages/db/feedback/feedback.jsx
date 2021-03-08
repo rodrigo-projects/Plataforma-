@@ -23,17 +23,22 @@ export default class feedback extends Component {
     this.state = {
 
       series: [{
-        name: "Confortável",
+        name: "",
         data: [[,]],
       },
 
-      {
-        name: "aceitável",
-        data: [[,]]
-      }, {
-        name: "incomodo",
-        data: [[,]]
-      }
+      ],
+      series2: [{
+        name: "",
+        data: [[,]],
+      },
+
+      ],
+      series3: [{
+        name: "",
+        data: [[,]],
+      },
+
       ],
 
       options: {
@@ -107,73 +112,73 @@ export default class feedback extends Component {
 
     const newSeries = [{
       name: "Filtro",
-      data: [[0,0],[70,70]]
-    }
-      ,
-
-    // {
-    //   name: "Todos",
-    //   data: [[,]]
-    // },
-      // {
-      //   name: "Todos",
-      //   data: [[,]]
-      // }
-      //  {
-      //   name: "incomodo",
-      //   data: [[,]]
-      // }
-    ]
+      data: [[0, 0], [70, 70]]
+    }]
+    const newSeries2 = [{
+      name: "Filtro",
+      data: [[0, 0], [70, 70]]
+    }]
+    const newSeries3 = [{
+      name: "Filtro",
+      data: [[0, 0], [80, 70]]
+    }]
 
     ////brembo linkdin
     const user = this.state.list2
-    console.log(this.state.list2)
-
-    const data = user.map(user1 => [user1.px, user1.pz]) //todos 
 
 
+
+
+
+    ///filtro de conforto
     const conforto = user => user.conforto == set.conforto
     const valor1 = user.filter(conforto)
-    console.log(valor1)
-    const data1 = valor1.map(user => [user.px, user.pz]) ///filtro de conforto
 
 
+    ///filtro de sexo
     const sexo = user => user.sexo == set.sexo
     const valor2 = user.filter(sexo)
-    console.log(valor2)
-    const data2 = valor2.map(user => [user.px, user.pz]) ///filtro de sexo
-    console.log(data2)
 
+    ///filtro de sexo e conforto
     const sexoConforto = valor1 => valor1.sexo == set.sexo
     const valor3 = valor1.filter(sexoConforto)
-    console.log(valor3)
-    const data3 = valor3.map(user => [user.px, user.pz]) ///filtro de sexo e conforto
-    console.log(data3)
 
 
-
-    // console.log(valor1)
 
     this.state.series.map((s) => {
       if (set.sexo === true && set.conforto === true) { ///todos
-        newSeries[0].data = data;
+        newSeries[0].data = user.map(user => [user.px, user.pz]);
+        newSeries2[0].data = user.map(user => [user.vx, user.vangular]);
+        newSeries3[0].data = user.map(user => [user.bx, 5]);
       } else if (set.sexo === true && set.conforto !== true) { ///filtro de conforto
-        newSeries[0].data = data1;
-
+        newSeries[0].data = valor1.map(user => [user.px, user.pz]);
+        newSeries2[0].data = valor1.map(user => [user.vx, user.vangular]);
+        newSeries3[0].data = valor1.map(user => [user.bx, 5]);
       } else if (set.sexo !== true && set.conforto === true) { ///filtro de sexo
-        newSeries[0].data = data2;
+        newSeries[0].data = valor2.map(user => [user.px, user.pz]);
+        newSeries2[0].data = valor2.map(user => [user.vx, user.vangular]);
+        newSeries3[0].data = valor2.map(user => [user.bx, 5]);
       } else {                                                  //filtro de sexo e conforto
-        newSeries[0].data = data3;
+        newSeries[0].data = valor3.map(user => [user.px, user.pz]);
+        newSeries2[0].data = valor3.map(user => [user.vx, user.vangular]);
+        newSeries3[0].data = valor3.map(user => [user.bx, 5]);
       }
 
-      // newSeries[1].data = data;
     })
 
 
     this.setState({
 
-      series: newSeries
+      series: newSeries,
+      series2: newSeries2,
+      series3: newSeries3
+
     })
+  }
+
+
+  filtros() {
+
   }
 
   componentWillMount() {
@@ -299,35 +304,25 @@ export default class feedback extends Component {
 
 
 
-  renderGraf() {
+  renderGraf(name, serie) {
     return (
 
       <div>
+        <div className="box box-primary">
+          <div className="box-header with-border">
+            <h3 className="box-title">{name}</h3>
+          </div>
+          <div className="box-body"></div>
+          <div id="chart">
+            <ReactApexChart options={this.state.options} series={serie} type="scatter" height={350} />
+          </div>
 
-        <div className="row">
-          <div className="col-md-6">
-            <div className="box box-primary">
-              <div className="box-header with-border">
-                <h4 className="box-title">Filtrar tabela</h4>
-
-                <div className="col-md-12">
-                  {/* general form elements */}
-                  <div className="box box-primary">
-                    <div className="box-header with-border">
-                      <h3 className="box-title">Banco</h3>
-                    </div>
-                    <div className="box-body"></div>
-
-
-
-                    <div id="chart">
-                      <ReactApexChart options={this.state.options} series={this.state.series} type="scatter" height={350} />
-                    </div>
-
-                  </div> </div></div></div></div></div></div>
-
+        </div> </div>
     )
   }
+
+
+
 
 
 
@@ -373,7 +368,7 @@ export default class feedback extends Component {
                     </div>
                     <div className="radio">
                       <label>
-                        <input type="radio" name="optionsRadios2" id="op1" defaultValue="" defaultChecked/>
+                        <input type="radio" name="optionsRadios2" id="op1" defaultValue="" defaultChecked />
                                 Todos
                               </label>
                     </div>
@@ -424,90 +419,6 @@ export default class feedback extends Component {
                   </div>
 
 
-
-
-                  {/* 
-                  <div className="modal-header">
-                    <h4 className="modal-title">Peso</h4>
-                  </div>
-
-
-
-                  <div className="col-xs-8 table-responsive">
-                    <table className="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Min.</th>
-                          <th>Máx.</th>
-
-                        </tr>
-                      </thead><tbody>
-                        <tr>
-
-                          <td>
-                            <div className="box-body">
-                              <div className="row">
-                                <div className="col-xs-12">
-                                  <input id="idade" type="number" className="form-control" />
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div className="box-body">
-                              <div className="row">
-                                <div className="col-xs-12">
-                                  <input id="peso" type="number" className="form-control" />
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-
- */}
-
-
-                  {/* 
-                  <div className="col-xs-8 table-responsive">
-                    <div className="modal-header">
-                      <h4 className="modal-title">Altura</h4>
-                    </div>
-
-                    <table className="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Min.</th>
-                          <th>Máx.</th>
-
-                        </tr>
-                      </thead><tbody>
-                        <tr>
-
-                          <td>
-                            <div className="box-body">
-                              <div className="row">
-                                <div className="col-xs-12">
-                                  <input id="idade" type="number" className="form-control" />
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                          <td>
-                            <div className="box-body">
-                              <div className="row">
-                                <div className="col-xs-12">
-                                  <input id="peso" type="number" className="form-control" />
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table> */}
                   <div className="col-xs-6">
                     <button className="btn btn-block btn-primary" type="button"
                       onClick={e => this.att("confortável")}>Gerar tabela</button>
@@ -519,19 +430,14 @@ export default class feedback extends Component {
                   </div>
 
                 </div>
-                {/* /.modal-content */}
               </div>
-              {/* /.modal-dialog */}
-
-
-
-
-
-
-
 
             </div>
-            {this.renderGraf()}
+            {this.renderGraf("Pedaleira", this.state.series)}
+            {this.renderGraf("Volante", this.state.series2)}
+            {this.renderGraf("Banco", this.state.series3)}
+
+
           </section>
 
 
