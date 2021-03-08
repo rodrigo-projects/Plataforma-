@@ -309,6 +309,8 @@ export default class feedback extends Component {
 
       <div>
         <div className="box box-primary">
+       
+              
           <div className="box-header with-border">
             <h3 className="box-title">{name}</h3>
           </div>
@@ -316,8 +318,7 @@ export default class feedback extends Component {
           <div id="chart">
             <ReactApexChart options={this.state.options} series={serie} type="scatter" height={350} />
           </div>
-
-        </div> </div>
+</div></div>
     )
   }
 
