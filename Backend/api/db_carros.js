@@ -79,13 +79,13 @@ module.exports = app => {
 
         try {
             // exists(user.edit, 'Selecione o automóvel para ser editado')
-            exists(user.carro, 'Novo nome do automóvel não informado')
-            exists(user.descrição, 'Descrição não informada')
-            exists(user.bx, 'Posição do banco não informada')
-            exists(user.vx, 'Posição do volante em X não informada')
-            exists(user.vangular, 'Posição angular do volante não informada')
-            exists(user.px, 'Posição da pedaleira em X não informada')
-            exists(user.pz, 'Posição da pedaleira em Z não informada')
+            // exists(user.carro, 'Novo nome do automóvel não informado')
+            // exists(user.descrição, 'Descrição não informada')
+            // exists(user.bx, 'Posição do banco não informada')
+            // exists(user.vx, 'Posição do volante em X não informada')
+            // exists(user.vangular, 'Posição angular do volante não informada')
+            // exists(user.px, 'Posição da pedaleira em X não informada')
+            // exists(user.pz, 'Posição da pedaleira em Z não informada')
             // exists(user.ref_marca, 'Selecione o automóvel para ser editado')
 
             const userFromDB = await app.db('carros')

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Swal from 'sweetalert2'
+
 
 export default class controleDireto extends Component {
     // componentDidMount(){
@@ -15,7 +17,7 @@ export default class controleDireto extends Component {
         //     // this.setState({ user: initialState.user, list }) 
 
         // })
-    
+
         const user = {
             conforto: '',
             sexo: '',
@@ -32,14 +34,14 @@ export default class controleDireto extends Component {
             pz: '',
         }
 
-           user.bx=document.getElementById('bx').value ;
+        user.bx = document.getElementById('bx').value;
         // const user = 20
-       
+
         axios.post(`http://192.168.0.105:3001/led`, user).then(resp => {
-   
+
 
         })
-    
+
     }
 
     salvar() {
@@ -98,7 +100,24 @@ export default class controleDireto extends Component {
 
         axios.post(`http://localhost:3001/cad_av`, user).then(resp => {
 
-        })
+            if (resp.data) {
+                Swal.fire({
+                    title: 'Cadastrado',
+                    text: 'Cadastro efetuado',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
+            } else {
+                Swal.fire({
+                    title: 'Erro',
+                    text: 'Cadastro não efetuado',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+
+            }
+
+            })
     }
 
 
@@ -295,44 +314,44 @@ export default class controleDireto extends Component {
                                             <div className="col-md-12">
                                                 {/* Custom Tabs (Pulled to the right) */}
                                                 <div className="nav-tabs-custom">
-                                                <br />
-                                            <label>Eixo X - Banco</label>
-                                            <br />
-                                            <div className="box-body">
-                                                <div className="row">
-                                                    <div className="col-xs-4">
-                                                        <input id="bx" type="number" className="form-control" placeholder="Eixo X" />
+                                                    <br />
+                                                    <label>Eixo X - Banco</label>
+                                                    <br />
+                                                    <div className="box-body">
+                                                        <div className="row">
+                                                            <div className="col-xs-4">
+                                                                <input id="bx" type="number" className="form-control" placeholder="Eixo X" />
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <label>Eixos X ; angular - Volante</label>
-                                            <br />
-                                            <div className="box-body">
-                                                <div className="row">
-                                                    <div className="col-xs-4">
-                                                        <input id="vx" type="number" className="form-control" placeholder="Eixo X" />
+                                                    <br />
+                                                    <label>Eixos X ; angular - Volante</label>
+                                                    <br />
+                                                    <div className="box-body">
+                                                        <div className="row">
+                                                            <div className="col-xs-4">
+                                                                <input id="vx" type="number" className="form-control" placeholder="Eixo X" />
+                                                            </div>
+                                                            <div className="col-xs-4">
+                                                                <input id="vangular" type="number" className="form-control" placeholder="angular" />
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div className="col-xs-4">
-                                                        <input id="vangular" type="number" className="form-control" placeholder="angular" />
+                                                    <br />
+                                                    <label>Eixos X ; Z - Pedaleira</label>
+                                                    <br />
+                                                    <div className="box-body">
+                                                        <div className="row">
+                                                            <div className="col-xs-4">
+                                                                <input id="px" type="number" className="form-control" placeholder="Eixo X" />
+                                                            </div>
+                                                            <div className="col-xs-4">
+                                                                <input id="pz" type="number" className="form-control" placeholder="Eixo Z" />
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <label>Eixos X ; Z - Pedaleira</label>
-                                            <br />
-                                            <div className="box-body">
-                                                <div className="row">
-                                                    <div className="col-xs-4">
-                                                        <input id="px" type="number" className="form-control" placeholder="Eixo X" />
-                                                    </div>
-                                                    <div className="col-xs-4">
-                                                        <input id="pz" type="number" className="form-control" placeholder="Eixo Z" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                      
-                                                    
+
+
                                                     <div className="box-body">
                                                         <div className="row">
                                                             <div className="col-xs-4">

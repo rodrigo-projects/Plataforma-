@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import Swal from 'sweetalert2'
+
 const initialState = {
     user: { marca: '', descrição: '' },
     user2: {
@@ -35,6 +37,7 @@ export default class cadastroModelo extends Component {
     }
 
     load(user2) {
+        document.getElementById('ref_marca').value = user2.ref_marca
         this.setState({ user2 })
     }
 
@@ -53,18 +56,48 @@ export default class cadastroModelo extends Component {
                     if (resp.data.carro) {
                         const list2 = this.getUpdatedList2(resp.data)
                         this.setState({ user2: initialState.user2, list2 })
+                        Swal.fire({
+                            title: 'Cadastrado',
+                            text: 'Cadastro efetuado',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        })
+                    } else {
+                        Swal.fire({
+                            title: 'Erro',
+                            text: 'Cadastro não efetuado',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+
                     }
                 })
         }
         else {
 
             axios.post(`http://localhost:3001/editar_carro`, user2)
-            .then(resp => {
-                if (resp.data.carro) {
-                    const list2 = this.getUpdatedList2(resp.data)
-                    this.setState({ user2: initialState.user2, list2 })
-                }
-            })
+                .then(resp => {
+                    if (resp.data.carro) {
+                        const list2 = this.getUpdatedList2(resp.data)
+                        this.setState({ user2: initialState.user2, list2 })
+
+                        Swal.fire({
+                            title: 'Editado',
+                            text: 'Edição efetuada',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        })
+                    } else {
+                        Swal.fire({
+                            title: 'Erro',
+                            text: 'Edição não efetuada',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        })
+
+
+                    }
+                })
 
         }
     }
@@ -75,6 +108,12 @@ export default class cadastroModelo extends Component {
             .then(resp => {
                 const list2 = this.state.list2.filter(u => u !== user2)
                 this.setState({ list2 })
+                Swal.fire({
+                    title: 'Excluído',
+                    text: 'Banco de dados',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                })
             })
 
     }
@@ -203,7 +242,7 @@ export default class cadastroModelo extends Component {
                                             <div id="app" className="form-group">
                                                 <label>Marca</label>
                                                 <select id="ref_marca" className="form-control select2" style={{ width: '100%' }}>
-
+                                                    <option></option>
                                                     {this.state.list.map((option) => (
                                                         <option value={option.marca}>{option.marca}</option>
                                                     ))}

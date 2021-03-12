@@ -253,7 +253,7 @@ export default class cadastroMarca extends Component {
     render() {
 
         return (
-            <div>
+            <div> 
                 <div className="content-wrapper">
                     <section className="content-header">
                         <h1>Cadastros</h1>

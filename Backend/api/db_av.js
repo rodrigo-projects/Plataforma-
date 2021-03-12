@@ -20,16 +20,16 @@ module.exports = app => {
             exists(user.comp_p, 'Comprimento da perna não informado')
             exists(user.comp_b, 'Comprimento do braço não informado') 
 
-
+            app.db('avaliação2')
+            .insert(user)
+            .then(_ => res.json(user))
+            .catch(err =>res.json("falha"))
         } catch (msg) {
 
-            return res.status(400).send(msg)
+            return res.json()
         }
 
-        app.db('avaliação2')
-            .insert(user)
-            .then(_ => res.status(204).send())
-            .catch(err => res.status(500).send(err))
+       
     }
 
 
