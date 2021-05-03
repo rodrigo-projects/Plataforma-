@@ -340,10 +340,10 @@ export default class feedback extends Component {
           {/* Content Header (Page header) */}
           <section className="content-header">
             <h1>
-              Controle direto
+              Análises gráficas
     </h1>
             <ol className="breadcrumb">
-              <li><a href="#"><i className="fa fa-laptop" /> Controle de posições &gt; Controle direto</a></li>
+              <li><a href="#"><i className="fa fa-laptop" /> Banco de dados &gt; Avaliações</a></li>
             </ol>
           </section>
 

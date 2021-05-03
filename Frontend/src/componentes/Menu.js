@@ -11,12 +11,21 @@ export default props =>
                 {/* sidebar menu: : style can be found in sidebar.less */}
                 <ul className="sidebar-menu" data-widget="tree">
                     <li className="header">Menu de opções</li>
+                 
+
                     <li className="treeview">
-                        <Link Link to="/#">
-                            <i className="fa fa-th" /> <span>Painel de controle</span>
+                        <Link Link to="fake_url">
+                            <i className="fa fa-th" />
+                            <span>Painel de controle</span>
                             <span className="pull-right-container">
+                                <i className="fa fa-angle-left pull-right" />
                             </span>
                         </Link>
+                        <ul className="treeview-menu">
+                            <li><Link Link to="/painelControle"><i className="fa fa-circle-o" /> Painel de control</Link>
+                            </li>
+                           
+                        </ul>
                     </li>
                     <li className="treeview">
                         <Link Link to="fake_url">
